@@ -1,0 +1,11 @@
+# Not needed on Vercel (desktop-exe build, tests, notes, build output)
+build/
+dist/
+assets/
+tools/
+build.ps1
+constellarium.py
+.venv/
+__pycache__/
+*.md
+.claude/

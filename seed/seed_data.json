@@ -1,0 +1,4167 @@
+{
+ "categories": [
+  {
+   "name": "Desktop Tools > Privacy & Redaction",
+   "description": "Local tools that hide, mask or redact sensitive content."
+  },
+  {
+   "name": "Desktop Tools > Documents & Media",
+   "description": "Offline document / audio / video utilities."
+  },
+  {
+   "name": "Desktop Tools > 3D & Maker",
+   "description": "Parametric CAD, QR and print-ready exports."
+  },
+  {
+   "name": "Desktop Tools > Suites & Packaging",
+   "description": "Bundling tools into single executables."
+  },
+  {
+   "name": "AI & Learning > Study & Knowledge",
+   "description": "Study assistants, maps, flashcards, planners."
+  },
+  {
+   "name": "AI & Learning > Research",
+   "description": "Literature / dataset search and verification."
+  },
+  {
+   "name": "AI & Learning > Agents & Models",
+   "description": "Local models, analyst agents, fine-tuning."
+  },
+  {
+   "name": "Computer Vision > Fitness & Pose",
+   "description": "Pose estimation and scoring."
+  },
+  {
+   "name": "Computer Vision > Underwater Detection",
+   "description": "YOLO pipelines and edge / ROS2 deployment."
+  },
+  {
+   "name": "Podcast & Media > Studio Tools",
+   "description": "Tools that plan, produce and publish the podcast."
+  },
+  {
+   "name": "Podcast & Media > Episodes",
+   "description": "Planned and recorded 'Think About It' episodes."
+  },
+  {
+   "name": "Podcast & Media > Events & Brand",
+   "description": "Sonara Global events, site and brand."
+  },
+  {
+   "name": "Writing & Essays > Essay Series",
+   "description": "Character-analysis essay plans for Medium."
+  },
+  {
+   "name": "Writing & Essays > Essay Tooling",
+   "description": "Research / quote tooling for essays."
+  },
+  {
+   "name": "Web & Sites > Sites",
+   "description": "Static and event websites."
+  },
+  {
+   "name": "Web & Sites > Apps",
+   "description": "Hosted or browser-based applications."
+  },
+  {
+   "name": "Security & Crypto",
+   "description": "Steganography, encryption, private messaging."
+  },
+  {
+   "name": "Coursework",
+   "description": "Assignments and technical papers."
+  },
+  {
+   "name": "Meta & Workflow",
+   "description": "Idea management, knowledge hub, agent harness, project control."
+  },
+  {
+   "name": "Problem Lab & ExCo",
+   "description": "Ideas extracted from the Problem Lab!! and ExCo Secrets Telegram chats (IdeaBank v0.1)."
+  },
+  {
+   "name": "Problem Lab & ExCo > Events & Workshops",
+   "description": "Things Problem Lab runs, co-runs, staffs or shadows."
+  },
+  {
+   "name": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "description": "Workshops Problem Lab hosts for members and recruits."
+  },
+  {
+   "name": "Problem Lab & ExCo > Events & Workshops > Joint Events",
+   "description": "Events run with / for partners that we volunteer at, shadow or attend as a group."
+  },
+  {
+   "name": "Problem Lab & ExCo > Events & Workshops > Conferences & Booths",
+   "description": "Booths and conference presence."
+  },
+  {
+   "name": "Problem Lab & ExCo > Products & Tools",
+   "description": "Software and tools we build or adopt."
+  },
+  {
+   "name": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "description": "Live-voting web app for Soristic's Reimagining Philanthropy 2026."
+  },
+  {
+   "name": "Problem Lab & ExCo > Products & Tools > Internal Tooling & Ops",
+   "description": "CRM, project management, forms, comms tooling."
+  },
+  {
+   "name": "Problem Lab & ExCo > Products & Tools > Concept Products",
+   "description": "Early product concepts."
+  },
+  {
+   "name": "Problem Lab & ExCo > Partnerships & Network",
+   "description": "Organisations, advisors and people to work with."
+  },
+  {
+   "name": "Problem Lab & ExCo > Partnerships & Network > Corporate & Industry",
+   "description": ""
+  },
+  {
+   "name": "Problem Lab & ExCo > Partnerships & Network > NGOs & Healthcare",
+   "description": ""
+  },
+  {
+   "name": "Problem Lab & ExCo > Partnerships & Network > Academia & Advisors",
+   "description": ""
+  },
+  {
+   "name": "Problem Lab & ExCo > Club Strategy & Governance",
+   "description": "How the club is structured, recruits, brands itself and funds itself."
+  },
+  {
+   "name": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "description": ""
+  },
+  {
+   "name": "Problem Lab & ExCo > Club Strategy & Governance > Recognition & Admin",
+   "description": "Interest group / club status, forms, legal posture."
+  },
+  {
+   "name": "Problem Lab & ExCo > Club Strategy & Governance > Recruitment & Growth",
+   "description": ""
+  },
+  {
+   "name": "Problem Lab & ExCo > Club Strategy & Governance > Brand & Marketing",
+   "description": ""
+  },
+  {
+   "name": "Problem Lab & ExCo > Club Strategy & Governance > Funding & Finance",
+   "description": ""
+  },
+  {
+   "name": "Problem Lab & ExCo > Learning & Skills",
+   "description": "Training the team asked for or was pointed to."
+  },
+  {
+   "name": "Problem Lab & ExCo > Problem Discovery & Research",
+   "description": "Methodology, problem statements and insights - the core of Problem Lab."
+  },
+  {
+   "name": "Problem Lab & ExCo > External Opportunities",
+   "description": "Competitions, programmes and events shared in the chats."
+  },
+  {
+   "name": "Problem Lab & ExCo > External Opportunities > Hackathons & Competitions",
+   "description": ""
+  },
+  {
+   "name": "Problem Lab & ExCo > External Opportunities > Programmes & Grants",
+   "description": ""
+  },
+  {
+   "name": "Problem Lab & ExCo > External Opportunities > Talks & Summits",
+   "description": ""
+  }
+ ],
+ "projects": [
+  {
+   "name": "AmirsPortfolio",
+   "description": "Static portfolio site of AI, CV, data, web, writing and community work."
+  },
+  {
+   "name": "CADGen",
+   "description": "Private text/image -> printable CAD generator (Bambu 3MF / Onshape STEP / STL)."
+  },
+  {
+   "name": "EncDec",
+   "description": "Stego toolkit + private encrypted hub (images/audio/video, AES-256-GCM)."
+  },
+  {
+   "name": "EnrootGrp1",
+   "description": "Next.js Christmas student-event site."
+  },
+  {
+   "name": "image-mask",
+   "description": "Polygon black / blur / mosaic masks for images."
+  },
+  {
+   "name": "IPPTTracker",
+   "description": "Computer-vision IPPT push-up / sit-up tracker."
+  },
+  {
+   "name": "multibot (QuietScholar)",
+   "description": "Local-first study assistant and planner for SUTD students."
+  },
+  {
+   "name": "pdf-redactor",
+   "description": "Review, redact, reorder and merge PDFs locally."
+  },
+  {
+   "name": "Plagarism-Checker",
+   "description": "Private document similarity checker (TXT / DOCX / PDF)."
+  },
+  {
+   "name": "QRGen",
+   "description": "Offline QR generator with Bambu-compatible SVG / PNG."
+  },
+  {
+   "name": "Sonara",
+   "description": "Sonara Global 10-page site + 'Think About It' episode chatbot + Analyst agent plan."
+  },
+  {
+   "name": "TechPaperDELECA2",
+   "description": "DELE CA2 technical paper on reinforcement learning (DQN)."
+  },
+  {
+   "name": "themeparkapp",
+   "description": "Wonder Isle ticket-pricing calculator (Streamlit) for course 10.025 ITP 1D."
+  },
+  {
+   "name": "transcriber",
+   "description": "Offline meeting transcriber + local-LLM summary."
+  },
+  {
+   "name": "UniSuite",
+   "description": "One offline themed exe combining the uni tools."
+  },
+  {
+   "name": "UWU-CV",
+   "description": "Underwater object detection with YOLO26, edge + ROS2 later."
+  },
+  {
+   "name": "video-mask",
+   "description": "Crop and permanently black-out regions of videos."
+  },
+  {
+   "name": "visualize",
+   "description": "PDF -> knowledge map, Mermaid diagram, study guide, flashcards."
+  },
+  {
+   "name": "PCS (Podcast Creative Studio)",
+   "description": "Studio for the 'Think About It' podcast: plans, articles, publish kit, analyst."
+  },
+  {
+   "name": "Provenance",
+   "description": "Verified scholarly literature + dataset search assistant."
+  },
+  {
+   "name": "Lyceum (Essays)",
+   "description": "Private essay research studio for philosophy / humanities."
+  },
+  {
+   "name": "Essays series",
+   "description": "Character-analysis essay plans for Medium."
+  },
+  {
+   "name": "Knowledge Hub",
+   "description": "Obsidian vaults, Claude Vault harness and project notes."
+  },
+  {
+   "name": "IdeaBank",
+   "description": "Team idea store with auto-generated node graphs."
+  },
+  {
+   "name": "Constellarium",
+   "description": "This app: private local idea atlas (exe)."
+  },
+  {
+   "name": "Cybersecurity (planned)",
+   "description": "Empty folder in Knowledge Hub/Projects - reserved for security work."
+  },
+  {
+   "name": "Problem Lab (club)",
+   "description": "The student-led problem-discovery initiative itself."
+  },
+  {
+   "name": "PB Voting Platform",
+   "description": "Participatory-budgeting live-voting app for Reimagining Philanthropy (16 Nov 2026) - first client engagement."
+  },
+  {
+   "name": "Reimagining Philanthropy Booth",
+   "description": "Problem Lab booth at the Impact Marketplace, 16 Nov 2026, Lifelong Learning Institute."
+  },
+  {
+   "name": "Active Listening & Negotiation Workshop",
+   "description": "Inaugural workshop, 4 Nov 2026, 42 Singapore."
+  },
+  {
+   "name": "Designing the Final Frontier",
+   "description": "42 x Designers in Space event, 27 Oct 2026 - Problem Lab facilitated the hands-on activity."
+  },
+  {
+   "name": "Techies Product Workshop (shadow)",
+   "description": "Building Products: Starting Right with Techies, 19 Nov 2026."
+  },
+  {
+   "name": "Interest Group Application",
+   "description": "Becoming an official SUTD interest group -> probationary club -> club."
+  },
+  {
+   "name": "Ops & Tooling",
+   "description": "CRM, project tracker, member data, internal comms."
+  },
+  {
+   "name": "Partnership Pipeline",
+   "description": "Corporate, NGO and academic partners and advisors."
+  },
+  {
+   "name": "Funding & Grants",
+   "description": "Grants, sponsorship, budgeting."
+  },
+  {
+   "name": "Brand & Website",
+   "description": "Logo, pitch, posters, website."
+  },
+  {
+   "name": "Healthcare & Eldercare Discovery",
+   "description": "Problem statements from healthcare / eldercare partners (SEEPO, ELDEX, Alexandra Hospital, Birdhouse)."
+  },
+  {
+   "name": "Idea Bank",
+   "description": "This system - architecture + PRD proposal challenge from KM."
+  }
+ ],
+ "ideas": [
+  {
+   "title": "UniSuite: all uni tools in one offline exe",
+   "description": "Single offline themed Windows app (collapsible sidebar, home dashboard) combining Plagiarism checker, PDF redactor, Meeting transcriber, Video mask, Image mask and QR generator. Models stay outside the exe in models\\. Built twice; frozen --selftest passes.",
+   "category": "Desktop Tools > Suites & Packaging",
+   "projects": [
+    "UniSuite"
+   ],
+   "tags": [
+    "exe",
+    "offline",
+    "pyside6",
+    "suite"
+   ],
+   "status": "done",
+   "source": "GitHub/UniSuite/MVP.md",
+   "author": "Amir",
+   "related": [
+    "PDF Redactor",
+    "Meeting Transcriber",
+    "Video Mask",
+    "Image Mask",
+    "Plagiarism / Document Similarity Checker",
+    "QRGen: offline QR generator"
+   ]
+  },
+  {
+   "title": "UniSuite: hand click-through of the QR page in the built exe",
+   "description": "Next action from HANDOFF: still worth manually clicking through the QR page inside the built UniSuite exe.",
+   "category": "Desktop Tools > Suites & Packaging",
+   "projects": [
+    "UniSuite",
+    "QRGen"
+   ],
+   "tags": [
+    "qa",
+    "next-action"
+   ],
+   "status": "new",
+   "source": "GitHub/UniSuite/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "UniSuite: real-world transcriber run (GPU) inside the exe",
+   "description": "Next action: run the transcriber on a real recording from within the built exe on the GPU.",
+   "category": "Desktop Tools > Suites & Packaging",
+   "projects": [
+    "UniSuite",
+    "transcriber"
+   ],
+   "tags": [
+    "qa",
+    "gpu",
+    "next-action"
+   ],
+   "status": "new",
+   "source": "GitHub/UniSuite/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "UniSuite: app icon and speaker identification",
+   "description": "Optional next steps: custom app icon; speaker ID via pyannote (needs torch + an online HF token - omitted from v1).",
+   "category": "Desktop Tools > Suites & Packaging",
+   "projects": [
+    "UniSuite",
+    "transcriber"
+   ],
+   "tags": [
+    "diarization",
+    "icon",
+    "later"
+   ],
+   "status": "exploring",
+   "source": "GitHub/UniSuite/MVP.md",
+   "author": "Amir",
+   "related": [
+    "Meeting Transcriber"
+   ]
+  },
+  {
+   "title": "Add CADGen as a page in UniSuite",
+   "description": "Stated plan: CADGen's GUI is a self-contained widget so it can be dropped into UniSuite later (user: 'we will add it later'). Currently kept separate with its own exe.",
+   "category": "Desktop Tools > Suites & Packaging",
+   "projects": [
+    "UniSuite",
+    "CADGen"
+   ],
+   "tags": [
+    "integration",
+    "later"
+   ],
+   "status": "exploring",
+   "source": "GitHub/CADGen/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "PDF Redactor",
+   "description": "Local desktop tool for reviewing, redacting, reordering and merging PDFs. Mouse/keys/Ctrl-zoom paging; 'Export All (Reorder...)' merges exactly the source pages. PyInstaller specs exist. MVP requirements still need user confirmation.",
+   "category": "Desktop Tools > Privacy & Redaction",
+   "projects": [
+    "pdf-redactor",
+    "UniSuite"
+   ],
+   "tags": [
+    "pdf",
+    "redaction",
+    "exe"
+   ],
+   "status": "done",
+   "source": "GitHub/pdf-redactor/README.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Video Mask",
+   "description": "Crops videos to a selected region and permanently blacks out annotated areas. Local, deterministic OpenCV tool; no uploads. Two-tab GUI, dataset stats, annotate/process scripts, dist\\VideoMask.exe. Has a PUBLIC_SHOWCASE_README for the portfolio.",
+   "category": "Desktop Tools > Privacy & Redaction",
+   "projects": [
+    "video-mask",
+    "UniSuite"
+   ],
+   "tags": [
+    "opencv",
+    "video",
+    "redaction",
+    "exe"
+   ],
+   "status": "done",
+   "source": "GitHub/video-mask/README.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Image Mask",
+   "description": "Interactive Windows tool applying black, blur or mosaic polygon masks to images. Tk GUI + editor; builds release\\ImageTool.exe via PyInstaller.",
+   "category": "Desktop Tools > Privacy & Redaction",
+   "projects": [
+    "image-mask",
+    "UniSuite"
+   ],
+   "tags": [
+    "image",
+    "redaction",
+    "tkinter",
+    "exe"
+   ],
+   "status": "done",
+   "source": "GitHub/image-mask/README.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Plagiarism / Document Similarity Checker",
+   "description": "Private local tool comparing TXT, DOCX and PDF: overall similarity, shared vocabulary/phrases, matched-word coverage, likely copied or paraphrased passages. Evidence for review, not proof. Image-only PDFs need OCR first.",
+   "category": "Desktop Tools > Documents & Media",
+   "projects": [
+    "Plagarism-Checker",
+    "UniSuite"
+   ],
+   "tags": [
+    "nlp",
+    "pdf",
+    "docx",
+    "privacy"
+   ],
+   "status": "done",
+   "source": "GitHub/Plagarism-Checker/README.md",
+   "author": "Amir",
+   "related": [
+    "OCR for image-only PDFs in the similarity checker"
+   ]
+  },
+  {
+   "title": "OCR for image-only PDFs in the similarity checker",
+   "description": "README caveat: scanned PDFs without selectable text must be OCR'd before comparison. Tesseract is already working in the 'essays' conda env (Lyceum) - a reuse candidate.",
+   "category": "Desktop Tools > Documents & Media",
+   "projects": [
+    "Plagarism-Checker",
+    "Lyceum (Essays)"
+   ],
+   "tags": [
+    "ocr",
+    "tesseract",
+    "enhancement"
+   ],
+   "status": "new",
+   "source": "GitHub/Plagarism-Checker/README.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Meeting Transcriber",
+   "description": "Offline meeting transcriber (Windows exe) with automatic summary: Whisper transcription to outputs\\, 'Generate summary' on by default, Qwen2.5-3B-Instruct Q4_K_M via llama.cpp (GPU first, CPU fallback). Long transcripts chunked above ~9k tokens. Replaced weak FLAN-T5 summariser.",
+   "category": "Desktop Tools > Documents & Media",
+   "projects": [
+    "transcriber",
+    "UniSuite"
+   ],
+   "tags": [
+    "whisper",
+    "llama.cpp",
+    "offline",
+    "gpu"
+   ],
+   "status": "done",
+   "source": "GitHub/transcriber/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Speaker diarization for the transcriber",
+   "description": "diarization.py exists; pyannote needs torch + online HF token so it was dropped from UniSuite v1. Idea: make it optional / fully offline.",
+   "category": "Desktop Tools > Documents & Media",
+   "projects": [
+    "transcriber"
+   ],
+   "tags": [
+    "diarization",
+    "pyannote",
+    "later"
+   ],
+   "status": "exploring",
+   "source": "GitHub/UniSuite/MVP.md",
+   "author": "Amir",
+   "related": [
+    "Meeting Transcriber",
+    "PCS: per-speaker style (QLoRA + diarization)"
+   ]
+  },
+  {
+   "title": "CADGen: private 3D-print CAD generator",
+   "description": "Type instructions (and optionally add an image) -> printable part. Exports Bambu 3MF, Onshape STEP or STL. Parametric template library (box/enclosure, plate with holes, tube, L-bracket, phone stand, tray, nameplate, hook), optional local Ollama LLM -> validated JSON spec with deterministic rule-based fallback, editable spec + 3D preview, CLI, tests. Built as its own exe.",
+   "category": "Desktop Tools > 3D & Maker",
+   "projects": [
+    "CADGen"
+   ],
+   "tags": [
+    "cad",
+    "3d-print",
+    "ollama",
+    "cadquery",
+    "exe"
+   ],
+   "status": "done",
+   "source": "GitHub/CADGen/MVP.md",
+   "author": "Amir",
+   "related": [
+    "CADGen: Bambu 3MF <-> Onshape STEP/STL converter",
+    "QRGen: offline QR generator"
+   ]
+  },
+  {
+   "title": "CADGen: Bambu 3MF <-> Onshape STEP/STL converter",
+   "description": "Converter tab + CLI between Bambu-compatible 3MF and Onshape STEP/STL, both directions. (Opening/modifying an existing Bambu file was asked for, then dropped.)",
+   "category": "Desktop Tools > 3D & Maker",
+   "projects": [
+    "CADGen"
+   ],
+   "tags": [
+    "3mf",
+    "step",
+    "stl",
+    "converter"
+   ],
+   "status": "done",
+   "source": "GitHub/CADGen/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "CADGen: image + text used together",
+   "description": "Text selects outline/relief/emboss/engrave, sizes and caption; image supplies silhouette (extruded outline with holes) or heightmap relief.",
+   "category": "Desktop Tools > 3D & Maker",
+   "projects": [
+    "CADGen"
+   ],
+   "tags": [
+    "image",
+    "relief",
+    "silhouette"
+   ],
+   "status": "done",
+   "source": "GitHub/CADGen/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "CADGen: native CAD features for relief / imported meshes",
+   "description": "Known limitation: relief and imported-mesh conversions are mesh-based (faceted STEP / STL), so Onshape gets no native features. Also: multi-plate Bambu projects flatten to one centred object set; image tracing is thresholding; no vision model installed so images are never 'described'.",
+   "category": "Desktop Tools > 3D & Maker",
+   "projects": [
+    "CADGen"
+   ],
+   "tags": [
+    "limitation",
+    "improvement"
+   ],
+   "status": "new",
+   "source": "GitHub/CADGen/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "QRGen: offline QR generator",
+   "description": "Fully offline QR generator: text/URL plus Wi-Fi, vCard, email, SMS, phone, location, calendar payloads; live preview; ECC/version/border/colours; module styles (square/rounded/dots); optional centre logo; batch from CSV; CLI; scan-verification tests. Exports SVG, Bambu-compatible SVG (mm, single compound path), Bambu-compatible 1-bit PNG, and any image format.",
+   "category": "Desktop Tools > 3D & Maker",
+   "projects": [
+    "QRGen",
+    "UniSuite"
+   ],
+   "tags": [
+    "qr",
+    "bambu",
+    "svg",
+    "offline"
+   ],
+   "status": "done",
+   "source": "GitHub/QRGen/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "QuietScholar: private study workspace for SUTD students",
+   "description": "Local-first Windows study assistant: per-course workspaces, chat over your own slides/notes with streamed answers + Stop, match-strength note and source list; flashcards with spaced repetition; planner (Today, week timetable, .ics import). Each student hosts their own Ollama model; documents never leave the laptop; scalable to 1k-2k students because scaling is install/support not servers.",
+   "category": "AI & Learning > Study & Knowledge",
+   "projects": [
+    "multibot (QuietScholar)"
+   ],
+   "tags": [
+    "ollama",
+    "study",
+    "privacy",
+    "sutd",
+    "exe"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/multibot/MVP.md",
+   "author": "Amir",
+   "related": [
+    "QuietScholar: SUTD student-body pilot proposal",
+    "visualize: PDF to knowledge map"
+   ]
+  },
+  {
+   "title": "QuietScholar: SUTD student-body pilot proposal",
+   "description": "Pitch document (QuietScholar-SUTD-Pitch-and-Proposal.md) + ROADMAP: students host the model, desktop first, calendar-file import before any email/calendar sync. Still to do before rollout: check whether other student groups already have this; get IT approval for any school-system access.",
+   "category": "AI & Learning > Study & Knowledge",
+   "projects": [
+    "multibot (QuietScholar)"
+   ],
+   "tags": [
+    "pitch",
+    "pilot",
+    "roadmap",
+    "sutd"
+   ],
+   "status": "exploring",
+   "source": "GitHub/multibot/ROADMAP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "QuietScholar: email / calendar sync via an approved route",
+   "description": "Placeholder in UI. Real school Outlook/calendar access only through an approved route - no side-door workaround ('if I deploy it has to be by right').",
+   "category": "AI & Learning > Study & Knowledge",
+   "projects": [
+    "multibot (QuietScholar)"
+   ],
+   "tags": [
+    "integration",
+    "approval",
+    "later"
+   ],
+   "status": "shelved",
+   "source": "GitHub/multibot/ROADMAP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "QuietScholar: 'Study for this' from an exam",
+   "description": "One click from a planner item / Today entry opens a study chat in that course with the goal set and open topics listed. Marked SHOULD in the reconstructed MVP.",
+   "category": "AI & Learning > Study & Knowledge",
+   "projects": [
+    "multibot (QuietScholar)"
+   ],
+   "tags": [
+    "planner",
+    "study"
+   ],
+   "status": "done",
+   "source": "GitHub/multibot/ROADMAP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "QuietScholar: phone / web view for the planner only",
+   "description": "Roadmap: chat and documents stay in the desktop app; a phone/web view, if ever added, covers the planner only. Deferred.",
+   "category": "AI & Learning > Study & Knowledge",
+   "projects": [
+    "multibot (QuietScholar)"
+   ],
+   "tags": [
+    "mobile",
+    "planner",
+    "deferred"
+   ],
+   "status": "shelved",
+   "source": "GitHub/multibot/ROADMAP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "QuietScholar: quiz mode (removed)",
+   "description": "Removed on request; recorded as out of scope.",
+   "category": "AI & Learning > Study & Knowledge",
+   "projects": [
+    "multibot (QuietScholar)"
+   ],
+   "tags": [
+    "removed"
+   ],
+   "status": "shelved",
+   "source": "GitHub/multibot/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "visualize: PDF to knowledge map",
+   "description": "Local tool for visual learners: upload PDFs (also DOCX, LaTeX, Markdown, HTML, web links, pasted text) -> per-page study guide (summary, key points, terms, self-test), whole-PDF synthesis, knowledge map + live Mermaid diagram with per-node elaboration and references, learning path and flashcards. Local Qwen via Ollama; Windows exe built (no bundled model, 552 MB folder); separate maps per PDF.",
+   "category": "AI & Learning > Study & Knowledge",
+   "projects": [
+    "visualize"
+   ],
+   "tags": [
+    "pdf",
+    "mermaid",
+    "ollama",
+    "flashcards",
+    "exe"
+   ],
+   "status": "done",
+   "source": "GitHub/visualize/MVP.md",
+   "author": "Amir",
+   "related": [
+    "QuietScholar: private study workspace for SUTD students"
+   ]
+  },
+  {
+   "title": "visualize: background research agent",
+   "description": "Web-search agent guided by the PDF, enriching the map; ratings/corrections stored and exportable as training data.",
+   "category": "AI & Learning > Study & Knowledge",
+   "projects": [
+    "visualize"
+   ],
+   "tags": [
+    "agent",
+    "research"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/visualize/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "visualize: LoRA fine-tune from collected feedback",
+   "description": "Later: use stored ratings/corrections as training data for a LoRA fine-tune.",
+   "category": "AI & Learning > Agents & Models",
+   "projects": [
+    "visualize"
+   ],
+   "tags": [
+    "lora",
+    "fine-tuning",
+    "later"
+   ],
+   "status": "new",
+   "source": "GitHub/visualize/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Provenance: verified research assistant",
+   "description": "Personal research assistant: text or voice prompt -> arXiv, OpenAlex/Crossref, Semantic Scholar, PubMed and datasets (Kaggle, Roboflow). EVERY reference is verified first (verify.py; model never confirms citations). Per-project tabs in a collapsible sidebar with chat grounded in saved items, select/exclude, notes. Local llama3.1:8b via Ollama. Built as ProvenanceApp.exe; overview.md + architecture diagram written for the portfolio.",
+   "category": "AI & Learning > Research",
+   "projects": [
+    "Provenance"
+   ],
+   "tags": [
+    "research",
+    "verification",
+    "zotero",
+    "ollama",
+    "exe"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/Provenance/MVP.md",
+   "author": "Amir",
+   "related": [
+    "Provenance: Zotero integration",
+    "Provenance: MCP server for saved items"
+   ]
+  },
+  {
+   "title": "Provenance: Zotero integration",
+   "description": "MUST item not yet verified: send saved papers to the user's installed Zotero.",
+   "category": "AI & Learning > Research",
+   "projects": [
+    "Provenance"
+   ],
+   "tags": [
+    "zotero",
+    "integration"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/Provenance/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Provenance: link a tab to a project folder / editor",
+   "description": "Export refs and datasets into a VS Code project folder and open it from a tab.",
+   "category": "AI & Learning > Research",
+   "projects": [
+    "Provenance"
+   ],
+   "tags": [
+    "vscode",
+    "export"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/Provenance/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Provenance: LLM query planner instead of keyword routing",
+   "description": "Open question: use an LLM (Claude API) to turn prompts into queries rather than keyword auto-routing.",
+   "category": "AI & Learning > Research",
+   "projects": [
+    "Provenance"
+   ],
+   "tags": [
+    "planner",
+    "claude-api"
+   ],
+   "status": "exploring",
+   "source": "Knowledge Hub/Projects/Provenance/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Provenance: MCP server for saved items",
+   "description": "Open question: expose a tab's saved items through an MCP server so Claude Code can read them directly.",
+   "category": "AI & Learning > Research",
+   "projects": [
+    "Provenance",
+    "Knowledge Hub"
+   ],
+   "tags": [
+    "mcp",
+    "claude-code"
+   ],
+   "status": "exploring",
+   "source": "Knowledge Hub/Projects/Provenance/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Provenance: Strata dataset connector",
+   "description": "Strata source was never identified; connector is a stub. Dropped for now by the user.",
+   "category": "AI & Learning > Research",
+   "projects": [
+    "Provenance"
+   ],
+   "tags": [
+    "datasets",
+    "stub"
+   ],
+   "status": "shelved",
+   "source": "Knowledge Hub/Projects/Provenance/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Provenance: full-text PDF ingestion and LLM summaries",
+   "description": "Listed out of scope for now (together with multi-user, hosting, mobile).",
+   "category": "AI & Learning > Research",
+   "projects": [
+    "Provenance"
+   ],
+   "tags": [
+    "later",
+    "pdf"
+   ],
+   "status": "shelved",
+   "source": "Knowledge Hub/Projects/Provenance/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Sonara Analyst: 'Think About It' research partner agent",
+   "description": "Text-only Python prototype (AgenticAIPlan.md): retrieve relevant timestamped moments from prior episodes, separate evidence from the Analyst's own labelled interpretation, cite episode/date/timestamp/link, say when the archive lacks evidence. Status: design only; no channel data fetched yet.",
+   "category": "AI & Learning > Agents & Models",
+   "projects": [
+    "Sonara"
+   ],
+   "tags": [
+    "agent",
+    "rag",
+    "podcast",
+    "analyst"
+   ],
+   "status": "exploring",
+   "source": "GitHub/Sonara/AgenticAIPlan.md",
+   "author": "Amir",
+   "related": [
+    "PCS: AI cohost - Analyst",
+    "Sonara: episode chatbot with local memory"
+   ]
+  },
+  {
+   "title": "PCS: per-speaker style (QLoRA + diarization)",
+   "description": "Open question: QLoRA fine-tuning later, and diarization (host vs guest) to learn per-person style from transcripts.",
+   "category": "AI & Learning > Agents & Models",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "qlora",
+    "diarization"
+   ],
+   "status": "exploring",
+   "source": "Knowledge Hub/Projects/PCS/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "IPPT Tracker",
+   "description": "Computer-vision tracker for the Singapore IPPT push-up / sit-up test: MediaPipe pose, calibration, scoring per official HTA/SPF/SAF rubrics; recorded footage first, then live camera (phone as wireless camera over LAN HTTP, laptop as display); dashboard with rep count and up/down graph; GPU in 'ippt' env; Render blueprint for deployment.",
+   "category": "Computer Vision > Fitness & Pose",
+   "projects": [
+    "IPPTTracker"
+   ],
+   "tags": [
+    "mediapipe",
+    "pose",
+    "fitness",
+    "render"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/IPPTTracker/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "IPPT Tracker: female standards",
+   "description": "SHOULD/later: add the female scoring standards.",
+   "category": "Computer Vision > Fitness & Pose",
+   "projects": [
+    "IPPTTracker"
+   ],
+   "tags": [
+    "scoring",
+    "later"
+   ],
+   "status": "new",
+   "source": "GitHub/IPPTTracker/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "UWU-CV: underwater object detection pipeline",
+   "description": "Reproducible pipeline: ingest open Roboflow underwater datasets -> YOLO26 training -> eval (mAP, P/R) -> inference demo. Phase 1 on RTX 5070; later edge deployment. Detector core stays framework-agnostic (no ROS dependency).",
+   "category": "Computer Vision > Underwater Detection",
+   "projects": [
+    "UWU-CV"
+   ],
+   "tags": [
+    "yolo26",
+    "roboflow",
+    "ultralytics",
+    "underwater"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/UWU-CV/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "UWU-CV: ROS2 detector node",
+   "description": "Wrap the detector in a thin ROS2 node subscribing to a camera topic and publishing detections, so it joins the robot's ROS2 graph (motor control, navigation).",
+   "category": "Computer Vision > Underwater Detection",
+   "projects": [
+    "UWU-CV"
+   ],
+   "tags": [
+    "ros2",
+    "robotics",
+    "later"
+   ],
+   "status": "new",
+   "source": "GitHub/UWU-CV/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "UWU-CV: edge export and live detection",
+   "description": "Export to ONNX / TensorRT / NCNN / TFLite and run live on an edge device (Jetson-class, Pi + accelerator - unconfirmed). Target FPS to be defined.",
+   "category": "Computer Vision > Underwater Detection",
+   "projects": [
+    "UWU-CV"
+   ],
+   "tags": [
+    "edge",
+    "onnx",
+    "tensorrt",
+    "later"
+   ],
+   "status": "new",
+   "source": "GitHub/UWU-CV/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "UWU-CV: merged datasets and underwater augmentation",
+   "description": "Combine several Roboflow datasets (class merging, imbalance handling) and tune augmentation for colour cast, turbidity and low light; experiment tracking across YOLO variants (W&B/CSV).",
+   "category": "Computer Vision > Underwater Detection",
+   "projects": [
+    "UWU-CV"
+   ],
+   "tags": [
+    "augmentation",
+    "datasets",
+    "tracking"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/UWU-CV/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "UWU-CV: dataset clean / near-duplicate tooling",
+   "description": "Built during Nov 2026: symmetric near-duplicate detection with removal logs and regression tests (see Known problems).",
+   "category": "Computer Vision > Underwater Detection",
+   "projects": [
+    "UWU-CV"
+   ],
+   "tags": [
+    "dedupe",
+    "quality"
+   ],
+   "status": "done",
+   "source": "GitHub/UWU-CV/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "TechPaper: reinforcement learning (DQN) report",
+   "description": "DELE CA2 technical paper with DQN notebook, LaTeX report, references.bib and compiled PDF.",
+   "category": "Coursework",
+   "projects": [
+    "TechPaperDELECA2"
+   ],
+   "tags": [
+    "rl",
+    "dqn",
+    "latex",
+    "paper"
+   ],
+   "status": "done",
+   "source": "GitHub/TechPaperDELECA2",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "PCS: Podcast Creative Studio",
+   "description": "Studio for 'Think About It' (Sonara Global): skills in a left sidebar, output in the main panel. Article (HTML/MD/PDF), Whisper transcript (faster-whisper large-v3-turbo, GPU), summary, optimised description, cover art, library with select-and-delete. Packaged as a private exe (ThinkAboutItStudio / Podcast Creative Studio).",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "PCS (Podcast Creative Studio)",
+    "Sonara"
+   ],
+   "tags": [
+    "podcast",
+    "whisper",
+    "exe",
+    "ollama"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/PCS/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "PCS: Episode Planner",
+   "description": "'The most basic and important one': from the host's text (+ links read locally) generate a ~30-minute section plan - title, subtitle, section titles, points to cover, ~5 questions per section - as MD/HTML/PDF, in the learned planning style of six past plans.",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "planner",
+    "podcast"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/PCS/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "PCS: Publish Kit",
+   "description": "Auto-generate YouTube description + tags and copy-paste WhatsApp / Telegram announcements for each episode.",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "youtube",
+    "whatsapp",
+    "telegram"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/PCS/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "PCS: AI cohost - Analyst",
+   "description": "Test feature: learn style and topics from all channel transcripts; per episode output Markdown of what is factually right/wrong plus the Analyst's own labelled opinions. Live analysis during recording is LATER. Local 4B fact-checking is weak - prefer Gemini + Search.",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "PCS (Podcast Creative Studio)",
+    "Sonara"
+   ],
+   "tags": [
+    "analyst",
+    "gemini",
+    "fact-check"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/PCS/MVP.md",
+   "author": "Amir",
+   "related": [
+    "Sonara Analyst: 'Think About It' research partner agent"
+   ]
+  },
+  {
+   "title": "PCS: Gemini radio show generator",
+   "description": "Button 'Generate radio show' -> multi-voice Gemini audio conversation for Spotify, informed by learned transcripts. Needs a Gemini key (uploaded by user via Settings 2026-11-06); audio path untested.",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "gemini",
+    "tts",
+    "spotify"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/PCS/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "PCS: AI-assisted vs real episode pipelines",
+   "description": "Two episode categories feed everything: (1) AI-assisted episodes from a vetted plan or essay -> radio-show script + voices -> article, cover, analyst, publish kit; (2) real posted YouTube episodes via transcript. AI-assisted episodes are a new feature of the podcast.",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "PCS (Podcast Creative Studio)",
+    "Lyceum (Essays)"
+   ],
+   "tags": [
+    "pipeline",
+    "radio-show",
+    "essays"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/PCS/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "PCS: AI cover art (SD-Turbo) with Sonara branding",
+   "description": "Local cover art via SD-Turbo (diffusers on the RTX GPU) because Ollama image models need Apple MLX; every cover shows the Sonara Global title and logo bottom-right; can reference previous covers; delete/regenerate past designs.",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "sd-turbo",
+    "cover-art",
+    "branding"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/PCS/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "PCS: rebuild exe with latest fixes",
+   "description": "Several features are source-tested only; exe rebuild pending verification (Crashpad PDF bug fix, library delete, radio show, cover art, rename).",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "exe",
+    "build",
+    "next-action"
+   ],
+   "status": "new",
+   "source": "Knowledge Hub/Projects/PCS/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Sonara Global website (10 pages)",
+   "description": "Static 10-page site (index, about, podcast, advisory, interests, membership, contact, events, structure, partnerships) sharing css/style.css. About is out of the nav; membership + contact combined; refreshed design around the association identity.",
+   "category": "Web & Sites > Sites",
+   "projects": [
+    "Sonara"
+   ],
+   "tags": [
+    "static",
+    "website",
+    "podcast"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/Sonara/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Sonara: episode chatbot with local memory",
+   "description": "Widget answering episode questions only from indexed transcript evidence; each opening starts a fresh visible chat while previous conversations stay in the browser profile (no sign-in) as context; clearable. Populate data/episodes.json from permitted transcripts; deploy only when asked.",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "Sonara"
+   ],
+   "tags": [
+    "chatbot",
+    "rag",
+    "privacy"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/Sonara/MVP.md",
+   "author": "Amir",
+   "related": [
+    "Sonara Analyst: 'Think About It' research partner agent"
+   ]
+  },
+  {
+   "title": "Sonara: server-side answers and cross-device memory",
+   "description": "If natural-language answers or shared memory are needed: design a Vercel Function, model provider and durable database with a separate privacy/retention policy.",
+   "category": "Podcast & Media > Studio Tools",
+   "projects": [
+    "Sonara"
+   ],
+   "tags": [
+    "vercel",
+    "database",
+    "privacy",
+    "later"
+   ],
+   "status": "new",
+   "source": "GitHub/Sonara/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Asia AI & Innovation Forum Series 2026",
+   "description": "Sonara Global hybrid conference (in-person + recording for the podcast), Singapore <-> Johor Bahru <-> Southeast Asia, proposed for the 3rd/4th week of April 2026. Plan document in PCS/5. Podcast.",
+   "category": "Podcast & Media > Events & Brand",
+   "projects": [
+    "Sonara"
+   ],
+   "tags": [
+    "event",
+    "conference",
+    "asia",
+    "ai"
+   ],
+   "status": "exploring",
+   "source": "Knowledge Hub/Projects/PCS/5. Podcast/Asia AI and Innovation Forum.docx",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Episode plan: AAJ (Aaron Wong + Jan Chan)",
+   "description": "One-hour structure revised around guest strengths: an investment-advisory lawyer / Asia-Pacific expansion consultant and a systems architect from the Asia AI association.",
+   "category": "Podcast & Media > Episodes",
+   "projects": [
+    "PCS (Podcast Creative Studio)",
+    "Sonara"
+   ],
+   "tags": [
+    "episode",
+    "plan",
+    "ai",
+    "business"
+   ],
+   "status": "exploring",
+   "source": "Knowledge Hub/Projects/PCS/5. Podcast/AAJ/AAJ ep plan.docx",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Episode plan: Ah Boys to Men - Zillennials (Amos Lau)",
+   "description": "30-minute episode on growth, transition, speech and confidence tied to the Sonara mission; real, reflective, youthful-but-wise tone.",
+   "category": "Podcast & Media > Episodes",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "episode",
+    "plan",
+    "growth"
+   ],
+   "status": "exploring",
+   "source": "Knowledge Hub/Projects/PCS/5. Podcast/Amos/Ep with Amos.docx",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Episode plan: Open Dialogue, Confident Speaking & Mentorship (Dreamy Shah)",
+   "description": "30-minute plan with a communication strategist / public-speaking coach.",
+   "category": "Podcast & Media > Episodes",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "episode",
+    "plan",
+    "speaking"
+   ],
+   "status": "exploring",
+   "source": "Knowledge Hub/Projects/PCS/5. Podcast/DS",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Episode 10: AI & Business in Asia - Opportunities for the Next Generation (Aaron Wong)",
+   "description": "30-minute plan with an investment advisory lawyer and Asia-Pacific business expansion consultant.",
+   "category": "Podcast & Media > Episodes",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "episode",
+    "plan",
+    "ai",
+    "business"
+   ],
+   "status": "exploring",
+   "source": "Knowledge Hub/Projects/PCS/5. Podcast/Ep 10 - Aaron",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Episode 7: The Librarian - AI, youth and everyday tech (Tiago Alves)",
+   "description": "30-minute plan with the CEO of Librarian Inc. plus a PDF summary of part 2.",
+   "category": "Podcast & Media > Episodes",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "episode",
+    "plan",
+    "ai",
+    "youth"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/PCS/5. Podcast/Ep 7 - T",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Episode 8: Finding Your Voice - Growth, Transition & Speech (Adeline Yng)",
+   "description": "30-minute plan on personal growth and public speaking (Toastmasters Singapore), with part 1/part 2 summaries and two summary PDFs.",
+   "category": "Podcast & Media > Episodes",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "episode",
+    "plan",
+    "speaking"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/PCS/5. Podcast/Ep 8 - Ad",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Episodes 4 and 5 recordings (Z; Kafka & Z)",
+   "description": "Raw recordings of episode 4 (Z) and episode 5 (Kafka & Z) stored with a resume PDF - candidates for transcription / publish kit.",
+   "category": "Podcast & Media > Episodes",
+   "projects": [
+    "PCS (Podcast Creative Studio)"
+   ],
+   "tags": [
+    "episode",
+    "recording",
+    "transcribe"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/PCS/5. Podcast",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Essays: character-analysis series for Medium",
+   "description": "Argumentative essay plans on method, neutral and non-plot-fixated, with philosophy and global-humanities lenses. Per season: title, central question, thesis, methods, lesson, two lenses. Delivered as .md and .docx.",
+   "category": "Writing & Essays > Essay Series",
+   "projects": [
+    "Essays series"
+   ],
+   "tags": [
+    "medium",
+    "philosophy",
+    "humanities"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/Essays/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Essay plan: Peaky Blinders (6 seasons)",
+   "description": "Tommy and each season's antagonist; frames from 'Know the rules better than the people who wrote them' to 'Designing for the day you step back'.",
+   "category": "Writing & Essays > Essay Series",
+   "projects": [
+    "Essays series"
+   ],
+   "tags": [
+    "peaky-blinders",
+    "strategy"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/Essays/peaky_blinders_essay_plan.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Essay plan: The Mentalist (7 seasons)",
+   "description": "Patrick Jane's methods: 'Read first, speak second' to 'Reading and trusting'. User chooses the episodes.",
+   "category": "Writing & Essays > Essay Series",
+   "projects": [
+    "Essays series"
+   ],
+   "tags": [
+    "mentalist",
+    "method"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/Essays/the_mentalist_essay_plan.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Essay plan: Elementary (7 seasons)",
+   "description": "Holmes' and Watson's methods: habits for clear thinking, second opinions, teaching and self-checking, verify before you conclude.",
+   "category": "Writing & Essays > Essay Series",
+   "projects": [
+    "Essays series"
+   ],
+   "tags": [
+    "elementary",
+    "method"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/Essays/elementary_essay_plan.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Essay plan: MobLand - Harry Da Souza (S1-S2)",
+   "description": "Character and behaviour analysis of Harry Da Souza: 'First, stop the bleeding' and 'When loyalty becomes the variable'. Corrected the nakodo mistake on 2026-11-03.",
+   "category": "Writing & Essays > Essay Series",
+   "projects": [
+    "Essays series"
+   ],
+   "tags": [
+    "mobland",
+    "method"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/Essays/mobland_essay_plan.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Essay plans: films - In the Grey, Ministry of Ungentlemanly Warfare",
+   "description": "SHOULD item: film essays; Word drafts already exist for both.",
+   "category": "Writing & Essays > Essay Series",
+   "projects": [
+    "Essays series"
+   ],
+   "tags": [
+    "film",
+    "draft"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/Essays/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Essays: convenience vs growth / failure and experimentation",
+   "description": "Reflective essay drafts and mind-map images (Convenience vs Laziness, Failure and Experimentation, Choosing Between Safe Paths and Growth, Thinking Between Two Study Worlds).",
+   "category": "Writing & Essays > Essay Series",
+   "projects": [
+    "Essays series"
+   ],
+   "tags": [
+    "reflection",
+    "draft"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/Essays",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Lyceum: private essay research studio",
+   "description": "Local web app (FastAPI + Ollama llama3.1:8b + Tesseract OCR) for planning/researching essays: Desk, Essays with version history, Workbench (Vet, Titles, Lenses, Sources, Quotes, History), Library with full-text search, Quote Studio (verbatim, page-cited quotes - never generated), Atlas of 38 starting points, Ask, Timeline. Also packaged as LyceumApp.exe.",
+   "category": "Writing & Essays > Essay Tooling",
+   "projects": [
+    "Lyceum (Essays)"
+   ],
+   "tags": [
+    "fastapi",
+    "ollama",
+    "ocr",
+    "quotes",
+    "exe"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/Essays/lyceum/README.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Lyceum: docx / Markdown export of an essay plan",
+   "description": "Open question: add docx / Markdown export of an essay plan directly from Lyceum.",
+   "category": "Writing & Essays > Essay Tooling",
+   "projects": [
+    "Lyceum (Essays)"
+   ],
+   "tags": [
+    "export",
+    "docx"
+   ],
+   "status": "new",
+   "source": "Knowledge Hub/Projects/Essays/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Lyceum: check Atlas entries against primary texts",
+   "description": "Atlas entries come from general knowledge, not checked against primary texts.",
+   "category": "Writing & Essays > Essay Tooling",
+   "projects": [
+    "Lyceum (Essays)"
+   ],
+   "tags": [
+    "verification",
+    "atlas"
+   ],
+   "status": "new",
+   "source": "Knowledge Hub/Projects/Essays/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Amir Rahman portfolio website",
+   "description": "Static portfolio of AI, computer vision, data, web, writing and community work. index.html + assets (gallery of awards) + interactive network graphs generated by Python. Serve with python -m http.server 8000. MVP needs user confirmation (no session history).",
+   "category": "Web & Sites > Sites",
+   "projects": [
+    "AmirsPortfolio"
+   ],
+   "tags": [
+    "portfolio",
+    "static",
+    "network-graphs"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/AmirsPortfolio/README.md",
+   "author": "Amir",
+   "related": [
+    "Portfolio showcase: overview.md for Provenance, Lyceum, Video Mask"
+   ]
+  },
+  {
+   "title": "Portfolio showcase: overview.md for Provenance, Lyceum, Video Mask",
+   "description": "High-level write-ups and architecture diagrams (core code stays private): Provenance and Lyceum overview.md + mermaid diagrams; video-mask PUBLIC_SHOWCASE_README; QuietScholar public-showcase screenshots.",
+   "category": "Web & Sites > Sites",
+   "projects": [
+    "AmirsPortfolio",
+    "Provenance",
+    "Lyceum (Essays)",
+    "video-mask"
+   ],
+   "tags": [
+    "portfolio",
+    "docs",
+    "diagram"
+   ],
+   "status": "done",
+   "source": "Knowledge Hub/Projects/Provenance/overview.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "EnrootGrp1: Christmas student-event site",
+   "description": "Next.js event site: info-poster feel with date/time/place, visit-us section with map and Telegram contact, 'Register my room' banner and /register page. Additive changes only; MVP items reconstructed, not ticked.",
+   "category": "Web & Sites > Sites",
+   "projects": [
+    "EnrootGrp1"
+   ],
+   "tags": [
+    "nextjs",
+    "event",
+    "registration"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/EnrootGrp1/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "EncDec: steganography + encryption toolkit",
+   "description": "Hide a message or image inside image, audio or video, each with a decoder; optional password on every tool; Text<->Cipher using AES-256-GCM (byte-compatible desktop <-> phone). Desktop app StegoTool.exe, phone web app (needs https/file://).",
+   "category": "Security & Crypto",
+   "projects": [
+    "EncDec"
+   ],
+   "tags": [
+    "steganography",
+    "aes-gcm",
+    "exe"
+   ],
+   "status": "done",
+   "source": "GitHub/EncDec/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "EncDec Hub: private encrypted drops and live chat",
+   "description": "Hosted, login-protected hub for specific friends: admin-created accounts only, drops waiting for a recipient in any supported format, live E2E-encrypted chat (server never sees passphrases or plaintext). Render deployment is the user's step.",
+   "category": "Security & Crypto",
+   "projects": [
+    "EncDec"
+   ],
+   "tags": [
+    "hub",
+    "chat",
+    "render",
+    "e2e"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/EncDec/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "EncDec: persistent storage on Render",
+   "description": "SHOULD: free-tier Render wipes SQLite on restart; add persistent storage.",
+   "category": "Security & Crypto",
+   "projects": [
+    "EncDec"
+   ],
+   "tags": [
+    "render",
+    "storage",
+    "later"
+   ],
+   "status": "new",
+   "source": "GitHub/EncDec/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "EncDec: video support in hub / phone",
+   "description": "SHOULD: video steganography exists on desktop only; bring it to the hub and phone web app.",
+   "category": "Security & Crypto",
+   "projects": [
+    "EncDec"
+   ],
+   "tags": [
+    "video",
+    "later"
+   ],
+   "status": "new",
+   "source": "GitHub/EncDec/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "EncDec: publish StegoTool.exe via GitHub Releases",
+   "description": "SHOULD: dist/ is git-ignored (100 MB limit), so ship the exe as a release asset.",
+   "category": "Security & Crypto",
+   "projects": [
+    "EncDec"
+   ],
+   "tags": [
+    "release",
+    "github",
+    "later"
+   ],
+   "status": "new",
+   "source": "GitHub/EncDec/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Cybersecurity projects folder",
+   "description": "Knowledge Hub/Projects/Cybersecurity exists but is empty - placeholder for future security work (could host EncDec-style tools, CTF notes, redaction tooling).",
+   "category": "Security & Crypto",
+   "projects": [
+    "Cybersecurity (planned)"
+   ],
+   "tags": [
+    "placeholder"
+   ],
+   "status": "new",
+   "source": "Knowledge Hub/Projects/Cybersecurity",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Wonder Isle ticket pricing calculator",
+   "description": "Course 10.025 ITP 1D Track A: 30-50 line commented Python (Streamlit) cashier tool: dictionary price lookup, discount function, family-bundle rule, only taught libraries; plus separate read/write functions and a Streamlit page with daily/weekly revenue leaderboard. Must explain every line and disclose AI use.",
+   "category": "Coursework",
+   "projects": [
+    "themeparkapp"
+   ],
+   "tags": [
+    "streamlit",
+    "pricing",
+    "10.025"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/themeparkapp/MVP.md",
+   "author": "Amir",
+   "related": [
+    "themeparkapp: pricing strategy brainstorm"
+   ]
+  },
+  {
+   "title": "themeparkapp: pricing strategy brainstorm",
+   "description": "From ideas.txt: seasons-based pricing (local vs international), supply and demand, hour-based pricing, hard cap on discount and price hike, who the tool faces (public / internal / stakeholder), price optimisation.",
+   "category": "Coursework",
+   "projects": [
+    "themeparkapp"
+   ],
+   "tags": [
+    "pricing",
+    "dynamic-pricing",
+    "brainstorm"
+   ],
+   "status": "new",
+   "source": "GitHub/themeparkapp/ideas.txt",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "IdeaBank: team idea store with node graphs",
+   "description": "Original web version: categorised ideas, auto-generated node graphs (tables board, full network, category<->project map), import/export, Vercel + Neon deployment prepared. Constellarium is its private offline-exe sibling.",
+   "category": "Meta & Workflow",
+   "projects": [
+    "IdeaBank",
+    "Constellarium"
+   ],
+   "tags": [
+    "ideas",
+    "graph",
+    "vercel"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/IdeaBank/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "IdeaBank: Telegram bot daily morning brief",
+   "description": "Requested: a Telegram bot for the Problem Lab / ExCo group chats that sends Amir a daily morning summary. Setup guidance given, not built.",
+   "category": "Meta & Workflow",
+   "projects": [
+    "IdeaBank"
+   ],
+   "tags": [
+    "telegram",
+    "bot",
+    "summary"
+   ],
+   "status": "new",
+   "source": "GitHub/IdeaBank/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "IdeaBank: KM's challenge - proposal, architecture diagram and PRD",
+   "description": "Idea Bank proposal with solution-architecture diagram and PRD in M-C-A versions, final in README.",
+   "category": "Meta & Workflow",
+   "projects": [
+    "IdeaBank"
+   ],
+   "tags": [
+    "prd",
+    "architecture",
+    "challenge"
+   ],
+   "status": "exploring",
+   "source": "GitHub/IdeaBank/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "IdeaBank: graph polish - collapse subtrees, cluster layout, author filter",
+   "description": "Next-action list: collapse category subtrees, cluster layout and filter by author; force graph is dense at ~160 nodes.",
+   "category": "Meta & Workflow",
+   "projects": [
+    "IdeaBank",
+    "Constellarium"
+   ],
+   "tags": [
+    "graph",
+    "ux"
+   ],
+   "status": "new",
+   "source": "GitHub/IdeaBank/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "IdeaBank: migrate Upstash path to Neon (or drop the Node package)",
+   "description": "Open question: @neondatabase/serverless was installed but api/_core.py uses its own SQL-over-HTTP path; confirm direction before package.json becomes load-bearing.",
+   "category": "Meta & Workflow",
+   "projects": [
+    "IdeaBank"
+   ],
+   "tags": [
+    "neon",
+    "vercel",
+    "question"
+   ],
+   "status": "new",
+   "source": "GitHub/IdeaBank/HANDOFF.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Constellarium: private local idea atlas",
+   "description": "This app: single-user, offline exe; data in %APPDATA%\\Constellarium; pre-loaded with every project idea from the GitHub and Knowledge Hub project folders plus the Problem Lab / ExCo chat ideas.",
+   "category": "Meta & Workflow",
+   "projects": [
+    "Constellarium",
+    "IdeaBank"
+   ],
+   "tags": [
+    "exe",
+    "offline",
+    "ideas"
+   ],
+   "status": "in-progress",
+   "source": "GitHub/Constellarium/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Constellarium: auto-scan project folders for new ideas",
+   "description": "Future: re-scan GitHub + Knowledge Hub MVP/HANDOFF files and merge new ideas (the importer already merges by title).",
+   "category": "Meta & Workflow",
+   "projects": [
+    "Constellarium"
+   ],
+   "tags": [
+    "scanner",
+    "automation",
+    "later"
+   ],
+   "status": "new",
+   "source": "GitHub/Constellarium/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Knowledge Hub: project-control harness and vaults",
+   "description": "Claude Vault (Agent Harness, Memory logs, skills), Codex Vault and a Projects area where each project gets a PROJECT.md note; every project carries MVP / HANDOFF / B&A control files enforced by a SessionStart/Stop hook.",
+   "category": "Meta & Workflow",
+   "projects": [
+    "Knowledge Hub"
+   ],
+   "tags": [
+    "obsidian",
+    "harness",
+    "workflow"
+   ],
+   "status": "in-progress",
+   "source": "Knowledge Hub/Projects/README.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Knowledge Hub Projects: fill in the stub MVP",
+   "description": "The Projects folder MVP.md is still the auto-generated stub; define its goal.",
+   "category": "Meta & Workflow",
+   "projects": [
+    "Knowledge Hub"
+   ],
+   "tags": [
+    "housekeeping"
+   ],
+   "status": "new",
+   "source": "Knowledge Hub/Projects/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Backfilled MVPs need confirmation",
+   "description": "Many GitHub project MVPs were auto-backfilled on 2026-10-28 from READMEs with 'unknown - confirm with the user' requirements: AmirsPortfolio, image-mask, pdf-redactor, Plagarism-Checker, TechPaperDELECA2, video-mask (and reconstructed ones like EnrootGrp1, multibot, Sonara).",
+   "category": "Meta & Workflow",
+   "projects": [
+    "Knowledge Hub"
+   ],
+   "tags": [
+    "housekeeping",
+    "mvp"
+   ],
+   "status": "new",
+   "source": "GitHub/*/MVP.md",
+   "author": "Amir",
+   "related": []
+  },
+  {
+   "title": "Active Listening & Negotiation workshop (4 Nov, 42 Singapore)",
+   "description": "Inaugural workshop to engage and recruit SUTD and 42 members. KM presents; Josh does slides/agenda/interest form; Wei Hao liaises with 42 for the venue. Teaches reflecting thoughts, labelling emotions, open-ended questions, leading with empathy instead of advice. Runs 4-6pm as a 'small meeting' at 42.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Active Listening & Negotiation Workshop",
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "workshop",
+    "recruitment",
+    "active-listening",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-22",
+   "author": "Kai Ming (KM)",
+   "related": [
+    "Active-listening script / cheat sheet",
+    "Psychological First Aid (PFA) training for facilitators"
+   ],
+   "createdAt": "2026-10-22T12:00:00"
+  },
+  {
+   "title": "Empathy / trauma-informed-care training for engaging end users",
+   "description": "Train members to engage people who have problems (e.g. disabled students) with active listening, trauma-informed care and empathy.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "training",
+    "empathy",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Chatham House sharing circle + anonymous problem-submission form",
+   "description": "Sharing circle and/or anonymous online form where students can raise problems (e.g. a student unable to access something). Josh: forms/links are probably the most practical, since we're mostly school-bound.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Problem Lab (club)",
+    "Healthcare & Eldercare Discovery"
+   ],
+   "tags": [
+    "intake",
+    "anonymous",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Stakeholder engagement workshop",
+   "description": "Speaking to authority figures about their beneficiaries' problems. Josh imagines this as private one-on-one engagements people can request.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "workshop",
+    "stakeholders",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "As-is -> to-be workshop: mapping improvements to software",
+   "description": "Teach how to do such solutioning. Josh's caution: ask whether a real market exists and whether the improvement is worth it, or just a nice-to-have.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "workshop",
+    "solutioning",
+    "validation",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Data collection 101 (introvert-friendly, low-bias)",
+   "description": "Frameworks for gathering accurate data in an organised way, with less chance of bias or misled conclusions - including how to do it as an introvert/independently.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "workshop",
+    "research-methods",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Themed sessions with beneficiary groups",
+   "description": "Invite beneficiary groups to share and guide students through identifying themes and problems.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Problem Lab (club)",
+    "Healthcare & Eldercare Discovery"
+   ],
+   "tags": [
+    "workshop",
+    "beneficiaries",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Scoping workshop",
+   "description": "Fundamentals of scoping a problem (Josh: 'teaching of the fundamentals?').",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "workshop",
+    "fundamentals",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Fundamentals workshops for members; ad-hoc events when beneficiaries want to come",
+   "description": "Regular membership will be a small group, while ad-hoc beneficiary events will be bigger. Wei Hao: fundamentals can double as intro sessions for larger audiences. Alternate fundamentals and ad-hoc sessions based on availability.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "workshop",
+    "format",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Yearly disaster-recovery simulation with ADPC",
+   "description": "Flagship annual event - the biggest effort of the year, worth working hard once a year.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "flagship",
+    "annual",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Poll members to choose workshop time (avoid exam clashes)",
+   "description": "Dusk: run a poll for max participation; Wei Hao: shift to Monday evening after exams.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Active Listening & Negotiation Workshop"
+   ],
+   "tags": [
+    "process",
+    "scheduling",
+    "chat"
+   ],
+   "status": "done",
+   "source": "ExCo Secrets chat, 2026-10-25",
+   "author": "Suraj (Dusk)",
+   "related": [],
+   "createdAt": "2026-10-25T12:00:00"
+  },
+  {
+   "title": "Active-listening script / cheat sheet",
+   "description": "Loop: open question -> friend responds -> paraphrase -> label the emotion -> let them correct you -> repeat. KM also asked for a 'cute script' for the workshop.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Active Listening & Negotiation Workshop"
+   ],
+   "tags": [
+    "active-listening",
+    "materials",
+    "chat"
+   ],
+   "status": "done",
+   "source": "ExCo Secrets chat, 2026-09-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-30T12:00:00"
+  },
+  {
+   "title": "Invite a faculty advisor to the 4 Nov workshop",
+   "description": "Wei Hao: it would show a clear direction and put more of us physically present. Naimish: keep the workshop separate from the professor meeting. Outcome: kept separate.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Club Workshops",
+   "projects": [
+    "Active Listening & Negotiation Workshop",
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "advisor",
+    "decision",
+    "chat"
+   ],
+   "status": "shelved",
+   "source": "ExCo Secrets chat, 2026-10-28",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-28T12:00:00"
+  },
+  {
+   "title": "Facilitate the hands-on activity at 'Designing the Final Frontier' (42 x Designers in Space, 27 Oct)",
+   "description": "Problem Lab helped participants write 'How Might We' statements, choose features from cards and design a solution, and managed the crowd. Volunteers gathered by poll.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Joint Events",
+   "projects": [
+    "Designing the Final Frontier",
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "facilitation",
+    "designers-in-space",
+    "42",
+    "chat"
+   ],
+   "status": "done",
+   "source": "ExCo Secrets chat, 2026-10-22",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-22T12:00:00"
+  },
+  {
+   "title": "Shadow Techies' C-suite 'Building Products: Starting Right' workshop (19 Nov, NTUC One Marina Blvd)",
+   "description": "Techies agreed to let members shadow the facilitators - a chance to learn how to run workshops/events. Attending: Teng Hwee, Wei Hao, Suraj, Hui Ting.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Joint Events",
+   "projects": [
+    "Techies Product Workshop (shadow)",
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "techies",
+    "shadowing",
+    "product-design",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-19",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-19T12:00:00"
+  },
+  {
+   "title": "Attend 'New Dev Roles in the AI Era' (SGInnovate, 22 Oct) for networking",
+   "description": "Network with philanthropic organisations. KM prepared a copy-and-highlight sheet of attendees so members can pick who to approach; KM coordinates registration.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Joint Events",
+   "projects": [
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "networking",
+    "sginnovate",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-10-21",
+   "author": "Kai Ming (KM)",
+   "related": [
+    "Event networking playbook (highlight targets, AI-summarise, coordinate arrivals)"
+   ],
+   "createdAt": "2026-10-21T12:00:00"
+  },
+  {
+   "title": "Event networking playbook (highlight targets, AI-summarise, coordinate arrivals)",
+   "description": "Make your own copy of the attendee sheet, highlight people to meet, have AI summarise your segments, send the list to KM so registrations and arrivals can be coordinated.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Joint Events",
+   "projects": [
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "networking",
+    "playbook",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-10-21",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-21T12:00:00"
+  },
+  {
+   "title": "Represent Problem Lab at ELDEX Asia (3 Oct)",
+   "description": "Eldercare expo. Josh and Suraj represented; Suraj drafted the partnership email to ELDEX.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Joint Events",
+   "projects": [
+    "Healthcare & Eldercare Discovery",
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "eldercare",
+    "expo",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-09-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-30T12:00:00"
+  },
+  {
+   "title": "Host events at 42 space / co-host with 42 and ROOT",
+   "description": "Event application is blocked until the group is established, so collaborate with 42 (and the ROOT VP Ops who wants to collab with 42) and host in 42's space. Ask 42 for permission to post on Slack, to host there, and to be listed on the student event portal.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Joint Events",
+   "projects": [
+    "Problem Lab (club)",
+    "Interest Group Application"
+   ],
+   "tags": [
+    "42",
+    "root",
+    "venue",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-26",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-26T12:00:00"
+  },
+  {
+   "title": "Alexandra Hospital: grant-writing & pitching workshop and meeting with Head of Giving (24 Oct)",
+   "description": "Hospital runs a youth-project support series; first workshop on grant writing and pitching. Also a chance to meet the Head of Giving & Stewardship about piloting student-run projects with patients. Galiana asked to attend.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Joint Events",
+   "projects": [
+    "Healthcare & Eldercare Discovery",
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "alexandra-hospital",
+    "pilot",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-10-21",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-21T12:00:00"
+  },
+  {
+   "title": "Booth at Reimagining Philanthropy 2026 - Impact Marketplace (16 Nov, Lifelong Learning Institute)",
+   "description": "Free booth; ~150-200 participants and ~15 organisations expected. Team: Josh (EAF), Hui Ting, Si Yi, Galiana + Suraj. Needs marketing materials (watch print lead times) and a staffing rota. Table and chair assumed until logistics confirmed.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Conferences & Booths",
+   "projects": [
+    "Reimagining Philanthropy Booth",
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "booth",
+    "soristic",
+    "16-nov",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-09-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-30T12:00:00"
+  },
+  {
+   "title": "Booth kit: screen display, repeatable pitch, optional flyers, QR code to capture contacts",
+   "description": "Conference-booth norms: (1) something on a screen, (2) a pitch everyone repeats, (3) optional flyers, (4) a QR code that feeds the CRM. Hardest part is the rotating schedule that keeps it staffed all day.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Conferences & Booths",
+   "projects": [
+    "Reimagining Philanthropy Booth",
+    "Ops & Tooling"
+   ],
+   "tags": [
+    "booth",
+    "qr",
+    "logistics",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-30T12:00:00"
+  },
+  {
+   "title": "Booth posters: one 'aesthetic' poster and one infographic poster",
+   "description": "Hui Ting's Figma drafts. Feedback: readable from ~1 m, rethink yellow/white + black/red colours, try the logo's yellow/orange; wording fixes ('bridging the gap', 'through every step', 'heart of Problem Lab').",
+   "category": "Problem Lab & ExCo > Events & Workshops > Conferences & Booths",
+   "projects": [
+    "Reimagining Philanthropy Booth",
+    "Brand & Website"
+   ],
+   "tags": [
+    "poster",
+    "design",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-24",
+   "author": "Hui Ting",
+   "related": [],
+   "createdAt": "2026-10-24T12:00:00"
+  },
+  {
+   "title": "External Activity Form (EAF) for off-campus events",
+   "description": "No harm filing the EAF for the booth: submit to ROOT Events & Welfare and OSL before the event day.",
+   "category": "Problem Lab & ExCo > Events & Workshops > Conferences & Booths",
+   "projects": [
+    "Reimagining Philanthropy Booth",
+    "Interest Group Application"
+   ],
+   "tags": [
+    "admin",
+    "eaf",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-23",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-23T12:00:00"
+  },
+  {
+   "title": "Participatory-budgeting live-voting web app for Reimagining Philanthropy",
+   "description": "Soristic asked for a simple web app for live cause-based giving votes. Problem Lab's first client engagement and a launch opportunity. Team: Teng Hwee, Timothy, Amir, KM. PoC done; MVP pending frontend and a review with the client.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform",
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "client",
+    "voting",
+    "web-app",
+    "soristic",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-09-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-30T12:00:00"
+  },
+  {
+   "title": "Vote allocation with 4-character codes + anonymous admin panel",
+   "description": "Admin panel allocates votes to codes, appears anonymous, shows a live tally that separates donor votes from attendance votes.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "admin",
+    "voting",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-07",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Vote weighting: donated votes + votes handed out + reserve for smaller orgs",
+   "description": "Audience vote is selective (given to people who need it). Orgs/donors decide their votes on the day after seeing booths; lock-in ends with the event.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "voting",
+    "design",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-07",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Voting window: link shared before the event, enabled only at voting time",
+   "description": "Voters can see how many votes they have beforehand; voting opens during the event. Open question: live voting from home.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "voting",
+    "ux",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-07",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Payout maths and export: round totals down, Excel with amount + donor email",
+   "description": "Round down so no cents appear from nowhere; minimum $2k. Double-confirm the email draft template.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "finance",
+    "export",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-07",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Same-day donor flow: donation link, one POC per side",
+   "description": "Donors need a link/POC for large or additional amounts on the day (possibly linked to gift.asia); cut-off time before voting TBC. Includes a donor landing page.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "donors",
+    "payments",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-07",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Review item: clean up UI/UX",
+   "description": "Part of the 4 Nov review list for the PB app.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "ux",
+    "review",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Review item: email system and voting-timer logic",
+   "description": "Implement the email system and the voting timer.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "email",
+    "timer",
+    "review",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Review item: stress-test volume and fix slow database",
+   "description": "Load-test the site and optimise the database (UAT also reported slow DB).",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "performance",
+    "review",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Review item: improved giving-votes flow",
+   "description": "Search code -> show vote count -> allow giving and taking votes. Voting screen should let the user type the number instead of tapping 100 times. 'Safety votes' needs one compact screen for all projects.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "voting",
+    "ux",
+    "review",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Review item: tie printed cards to names and search by name",
+   "description": "Link printed vote cards to attendee names and make them searchable.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "cards",
+    "review",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Review item: lock confirmed projects, websocket after lock, donor auto-preview",
+   "description": "Lock in confirmed projects; push live updates via websocket after the lock; donors get an automatic preview.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "realtime",
+    "review",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Review item: instant (optimistic) undo for admin stage changes",
+   "description": "Undo shouldn't wait for the API: update the UI immediately and send the request in the background. Also make stage changes after 'publish results' easy to see.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "admin",
+    "ux",
+    "review",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Review item: secure all routes",
+   "description": "Check every route is protected.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "security",
+    "review",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Review item: human-readable CSV export",
+   "description": "Stop exposing field names like donorVotes/audienceVotes; format the whole sheet and totals for visual use.",
+   "category": "Problem Lab & ExCo > Products & Tools > Participatory Budgeting Platform",
+   "projects": [
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "export",
+    "review",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Idea Bank: solution-architecture diagram + PRD specs",
+   "description": "KM's challenge to Amir: for whatever small IT system he wants to build (e.g. an idea bank), produce a proposal with a solution architecture diagram and PRD specs, saved as M-C-A versions, with the final added to README.md.",
+   "category": "Problem Lab & ExCo > Products & Tools > Internal Tooling & Ops",
+   "projects": [
+    "Idea Bank",
+    "Ops & Tooling"
+   ],
+   "tags": [
+    "idea-bank",
+    "prd",
+    "architecture",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-09-29",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-29T12:00:00"
+  },
+  {
+   "title": "CRM + QR-code / online form to capture and track contacts by 16 Nov",
+   "description": "HubSpot-based CRM (Suraj, with Amir). Keep fields simple: name, phone, org, role, optional pain-point question. KM: don't rely on GUI templates before you understand the underlying reports.",
+   "category": "Problem Lab & ExCo > Products & Tools > Internal Tooling & Ops",
+   "projects": [
+    "Ops & Tooling",
+    "Reimagining Philanthropy Booth"
+   ],
+   "tags": [
+    "crm",
+    "hubspot",
+    "qr",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-09-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-30T12:00:00"
+  },
+  {
+   "title": "Project-management tool: Atlassian vs Trello vs OpenProject",
+   "description": "KM prefers Atlassian (corporate norm; free tier caps at 10 users), Suraj suggested Trello, Naimish is self-hosting OpenProject (nearly complete 26 Oct). Wei Hao to move taskings onto it.",
+   "category": "Problem Lab & ExCo > Products & Tools > Internal Tooling & Ops",
+   "projects": [
+    "Ops & Tooling"
+   ],
+   "tags": [
+    "project-management",
+    "openproject",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-14",
+   "author": "Naimish (N 2)",
+   "related": [],
+   "createdAt": "2026-10-14T12:00:00"
+  },
+  {
+   "title": "Member data-collection form",
+   "description": "Quick form to keep member details on hand when asked (e.g. for insurance / 42 requirements).",
+   "category": "Problem Lab & ExCo > Products & Tools > Internal Tooling & Ops",
+   "projects": [
+    "Ops & Tooling",
+    "Interest Group Application"
+   ],
+   "tags": [
+    "members",
+    "forms",
+    "chat"
+   ],
+   "status": "done",
+   "source": "ExCo Secrets chat, 2026-09-29",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-09-29T12:00:00"
+  },
+  {
+   "title": "Use Google Calendar for events instead of voting",
+   "description": "Dusk's suggestion; Wei Hao: not everyone uses GCal.",
+   "category": "Problem Lab & ExCo > Products & Tools > Internal Tooling & Ops",
+   "projects": [
+    "Ops & Tooling"
+   ],
+   "tags": [
+    "scheduling",
+    "chat"
+   ],
+   "status": "shelved",
+   "source": "ExCo Secrets chat, 2026-10-22",
+   "author": "Suraj (Dusk)",
+   "related": [],
+   "createdAt": "2026-10-22T12:00:00"
+  },
+  {
+   "title": "Pretty HTML emails from automated Python mail script",
+   "description": "Naimish: change the message body to HTML to send nicer automated emails (Gmail SMTP + app password pattern shared by KM).",
+   "category": "Problem Lab & ExCo > Products & Tools > Internal Tooling & Ops",
+   "projects": [
+    "Ops & Tooling",
+    "PB Voting Platform"
+   ],
+   "tags": [
+    "email",
+    "automation",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "ExCo Secrets chat, 2026-10-31",
+   "author": "Naimish (N 2)",
+   "related": [],
+   "createdAt": "2026-10-31T12:00:00"
+  },
+  {
+   "title": "Pool AI-subscription usage by 'chopping' 5-hour slots",
+   "description": "Shared plan ($100/mo total): shout a slot and its reset time, use early mornings for long runs, check API credits separately.",
+   "category": "Problem Lab & ExCo > Products & Tools > Internal Tooling & Ops",
+   "projects": [
+    "Ops & Tooling"
+   ],
+   "tags": [
+    "ai-tools",
+    "shared-resources",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Architect smart-board for solution / system / hardware architects",
+   "description": "A smart (screen) board for architects; imagine an IoT version rolled out at hackathons.",
+   "category": "Problem Lab & ExCo > Products & Tools > Concept Products",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "iot",
+    "hackathon",
+    "concept",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-09-26",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-26T12:00:00"
+  },
+  {
+   "title": "Accenture CSR partnership",
+   "description": "Meeting 22 Oct; Suraj drafting pitch deck and partnership email (mentors for interviews, real problems, sponsorship, volunteers, speakers). Accenture CSR towers: Youth, Women, Senior Citizen, Environment & Sustainability, plus IMDA CTO-as-a-Service and pro bono.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Corporate & Industry",
+   "projects": [
+    "Partnership Pipeline",
+    "Funding & Grants"
+   ],
+   "tags": [
+    "accenture",
+    "csr",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-20",
+   "author": "Suraj (Dusk)",
+   "related": [],
+   "createdAt": "2026-10-20T12:00:00"
+  },
+  {
+   "title": "Climate Reality: pitch + climate problem-statement collection",
+   "description": "Initial problem statements collected from the Climate Reality network.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Corporate & Industry",
+   "projects": [
+    "Partnership Pipeline",
+    "Healthcare & Eldercare Discovery"
+   ],
+   "tags": [
+    "climate",
+    "problem-statements",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-09-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-30T12:00:00"
+  },
+  {
+   "title": "Techies APAC network",
+   "description": "Feature projects to 120+ industry experts; product design workshop; ability to bring members to shadow.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Corporate & Industry",
+   "projects": [
+    "Partnership Pipeline",
+    "Techies Product Workshop (shadow)"
+   ],
+   "tags": [
+    "techies",
+    "network",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Designers in Space Community",
+   "description": "Direct access to staff and ex-staff at NASA, ESA and space entrepreneurs; co-event with 42.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Corporate & Industry",
+   "projects": [
+    "Partnership Pipeline",
+    "Designing the Final Frontier"
+   ],
+   "tags": [
+    "space",
+    "network",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "UN Digital Innovation Network nomination",
+   "description": "Projects can be nominated to be featured by the UN.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Corporate & Industry",
+   "projects": [
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "un",
+    "network",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Lorong AI / SGInnovate problem-owner network (aviation: CAAS, SIA, SATS)",
+   "description": "Open call with new aviation problem statements and spotlight pitches on 13 Oct, plus a problem-owner / researcher register.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Corporate & Industry",
+   "projects": [
+    "Partnership Pipeline",
+    "Healthcare & Eldercare Discovery"
+   ],
+   "tags": [
+    "aviation",
+    "problem-statements",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-07",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Soristic as client and event partner",
+   "description": "Organiser of Reimagining Philanthropy; PB platform is a product built for them as a first test run - a big marketing opportunity.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Corporate & Industry",
+   "projects": [
+    "PB Voting Platform",
+    "Reimagining Philanthropy Booth"
+   ],
+   "tags": [
+    "soristic",
+    "client",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-07",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Follow up with Roche, National Kidney Foundation and Singapore Heart Foundation",
+   "description": "Partners that expressed preliminary interest and asked for follow-up (NKF contact, SHF, Roche).",
+   "category": "Problem Lab & ExCo > Partnerships & Network > NGOs & Healthcare",
+   "projects": [
+    "Partnership Pipeline",
+    "Healthcare & Eldercare Discovery"
+   ],
+   "tags": [
+    "roche",
+    "nkf",
+    "shf",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Broader healthcare / social-impact network",
+   "description": "Singapore Cancer Society, Be Kind SG, Autoimmune Diseases Singapore and Rare Disorders Society of Singapore listed as network partners.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > NGOs & Healthcare",
+   "projects": [
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "network",
+    "healthcare",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Alexandra Hospital: pilot student-run projects with patients",
+   "description": "Meet the Head of Giving & Stewardship about nonprofit partnerships including student-run pilots.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > NGOs & Healthcare",
+   "projects": [
+    "Healthcare & Eldercare Discovery",
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "pilot",
+    "hospital",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-21",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-21T12:00:00"
+  },
+  {
+   "title": "Birdhouse (BFG 2024 winner): help elderly living alone",
+   "description": "Founder looking for collaborators; KM recalls an MVP hackathon team working on this.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > NGOs & Healthcare",
+   "projects": [
+    "Healthcare & Eldercare Discovery"
+   ],
+   "tags": [
+    "eldercare",
+    "collab",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-05",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-05T12:00:00"
+  },
+  {
+   "title": "SIT / Zero Waste SG: food-waste & sustainability AI use-case ecosystem",
+   "description": "Early-stage collaboration explored after a visit to SIT Punggol; SIT Sustainability Day registration closed 14 Oct.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > NGOs & Healthcare",
+   "projects": [
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "sustainability",
+    "food-waste",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "Problem Lab!! chat, 2026-10-03",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-03T12:00:00"
+  },
+  {
+   "title": "Faculty advisor: Prof Lyle Fearnley agreed",
+   "description": "Met 21 Oct and agreed to be Club Advisor; update email lists upcoming events plus next steps (EAF, Interest Group application).",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Academia & Advisors",
+   "projects": [
+    "Partnership Pipeline",
+    "Interest Group Application"
+   ],
+   "tags": [
+    "advisor",
+    "faculty",
+    "chat"
+   ],
+   "status": "done",
+   "source": "ExCo Secrets chat, 2026-10-22",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-22T12:00:00"
+  },
+  {
+   "title": "First meeting with Prof Bradley Camburn (4 Nov, 2:30pm)",
+   "description": "Wei Hao sends reminders; Josh prepares the agenda.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Academia & Advisors",
+   "projects": [
+    "Partnership Pipeline",
+    "Interest Group Application"
+   ],
+   "tags": [
+    "advisor",
+    "faculty",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-20",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-20T12:00:00"
+  },
+  {
+   "title": "Quantum-physics professor as alternative advisor",
+   "description": "New to SUTD, advises no other club. Suggested by Teng Hwee.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Academia & Advisors",
+   "projects": [
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "advisor",
+    "chat"
+   ],
+   "status": "shelved",
+   "source": "ExCo Secrets chat, 2026-10-08",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-10-08T12:00:00"
+  },
+  {
+   "title": "Speakers: AI-security / governance experts (Dr Gaurav Manek, Emil Tan, Women in AI Governance)",
+   "description": "Possible speakers tied to the AI-safety events proposal that was later dropped.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Academia & Advisors",
+   "projects": [
+    "Funding & Grants"
+   ],
+   "tags": [
+    "speakers",
+    "ai-safety",
+    "chat"
+   ],
+   "status": "shelved",
+   "source": "ExCo Secrets chat, 2026-10-03",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-03T12:00:00"
+  },
+  {
+   "title": "Let SUTD students book consultation time with partner experts",
+   "description": "KM asked whether students can book consultations with the people in the network.",
+   "category": "Problem Lab & ExCo > Partnerships & Network > Academia & Advisors",
+   "projects": [
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "mentoring",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-10-08",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-08T12:00:00"
+  },
+  {
+   "title": "EXCO roles as career-exploration roles",
+   "description": "KM wants members in roles that let them explore (not commit to) careers: Secretary learns CRM and martech, Treasurer learns fintech and grant reporting.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "roles",
+    "exco",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Reshuffle EXCO roles to match actual taskings",
+   "description": "Done on 30 Oct.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "roles",
+    "exco",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-10-30",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-30T12:00:00"
+  },
+  {
+   "title": "Maker - Checker - Approver (MCA) review",
+   "description": "Whatever you make is checked by QA (Josh), then approved by VP / President / advisor.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "process",
+    "quality",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-30T12:00:00"
+  },
+  {
+   "title": "Soft filter on who gets to work on which projects",
+   "description": "Don't filter who can join, but members should hold weight without leaning on KM's credentials. Focus the week on event marketing and recruitment.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "members",
+    "process",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-10-09",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-09T12:00:00"
+  },
+  {
+   "title": "Regular exco updates to all members (~every 2 weeks)",
+   "description": "Exco admitted members weren't kept informed while systems were being built; promise biweekly updates and 'ask whoever is nearest in class'.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "communication",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-07",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Traditions: partner testimonials and the 'fess-up' drink",
+   "description": "Tradition 1: satisfied partners post, give credit on their site or write a LinkedIn testimonial. Tradition 2: whoever messes up and owns it gets a drink (under $8) once fixed together. KM also wants everyone to collect LinkedIn testimonials.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "culture",
+    "linkedin",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-09-26",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-26T12:00:00"
+  },
+  {
+   "title": "Limit the number of events",
+   "description": "Wei Hao: 'love events but can we not do so many'. Counterweight to every opportunity forwarded in the chat.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "focus",
+    "process",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-10-31",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-31T12:00:00"
+  },
+  {
+   "title": "Do not onboard partners faster than systems can handle",
+   "description": "KM: don't get an influx of partners and projects before systems are up; lock the PB project and let the conference be a launch.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "projects": [
+    "Problem Lab (club)",
+    "Ops & Tooling"
+   ],
+   "tags": [
+    "risk",
+    "ops",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-14",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-14T12:00:00"
+  },
+  {
+   "title": "Co-presidents instead of one president",
+   "description": "Wei Hao's tongue-in-cheek push to 'fight the SUTD system' with two presidents; KM suggested Wei Hao as VP with ROOT authority and Josh as President.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Structure & Culture",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "roles",
+    "chat"
+   ],
+   "status": "shelved",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Path to recognition: interest group -> probationary club -> official club",
+   "description": "Earliest interest group late 2026, probationary 2027, official mid-2028; formation happens in Trimester 1 (Jan-May). Work plan runs to FY2027/28.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Recognition & Admin",
+   "projects": [
+    "Interest Group Application"
+   ],
+   "tags": [
+    "roadmap",
+    "root",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Interest-group application pack (weeks 6-8)",
+   "description": "Needs: member list, mission, core values, work plan for the next financial year, club mentor, and 10+ members.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Recognition & Admin",
+   "projects": [
+    "Interest Group Application"
+   ],
+   "tags": [
+    "application",
+    "admin",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-20",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-20T12:00:00"
+  },
+  {
+   "title": "Don't claim to be an official 'fifth row' yet",
+   "description": "Pitch wording: say proposing / student initiative; it's fine to say SUTD and 42 students, but leave SUTD out of marketing materials until affiliated.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Recognition & Admin",
+   "projects": [
+    "Interest Group Application",
+    "Brand & Website"
+   ],
+   "tags": [
+    "positioning",
+    "decision",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-09-26",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-09-26T12:00:00"
+  },
+  {
+   "title": "Trademark / IP: don't file yet, keep proof of creation",
+   "description": "Logo, name and business model are separate filings; brand isn't established enough, keep drafts and public posts as proof, no obvious infringement found.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Recognition & Admin",
+   "projects": [
+    "Brand & Website"
+   ],
+   "tags": [
+    "legal",
+    "decision",
+    "chat"
+   ],
+   "status": "done",
+   "source": "ExCo Secrets chat, 2026-10-15",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-15T12:00:00"
+  },
+  {
+   "title": "Recruitment ramp to reach 10 members",
+   "description": "Need 9 more members by week 6-8; every member encouraged to pull in friends.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Recruitment & Growth",
+   "projects": [
+    "Problem Lab (club)",
+    "Interest Group Application"
+   ],
+   "tags": [
+    "recruitment",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Recruitment pitch and info-session dinner (28 Sep)",
+   "description": "Josh drafted the call; KM edited ('No experience required' wording). Casual dinner + info session Mon 28 Sep, 7:30pm.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Recruitment & Growth",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "recruitment",
+    "pitch",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-09-26",
+   "author": "Josh Chua",
+   "related": [],
+   "createdAt": "2026-09-26T12:00:00"
+  },
+  {
+   "title": "Recruit via 42: Slack post, host there, student portal listing",
+   "description": "Three asks to 42: permission to post on Slack, to host events there, and to be listed on the student-hosted events portal.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Recruitment & Growth",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "recruitment",
+    "42",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-07",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Telegram announcement channel / recruitment write-up",
+   "description": "Marketing copy for Telegram, pending KM review; flagged as unowned.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Recruitment & Growth",
+   "projects": [
+    "Problem Lab (club)",
+    "Brand & Website"
+   ],
+   "tags": [
+    "recruitment",
+    "telegram",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-22",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-22T12:00:00"
+  },
+  {
+   "title": "Credibility in the pitch: advisor credentials as a trust signal",
+   "description": "KM: corporate Singapore wants qualifications, so list advisor credentials. Josh: students may not know the lingo, and what matters is content and evidence.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Recruitment & Growth",
+   "projects": [
+    "Brand & Website"
+   ],
+   "tags": [
+    "pitch",
+    "trust",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-09-26",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-26T12:00:00"
+  },
+  {
+   "title": "Problem Lab logo, colour scheme and blurb for Soristic",
+   "description": "Logo finalised; blurb adapted from announcements. Colour feedback: try the logo's yellow/orange.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Brand & Marketing",
+   "projects": [
+    "Brand & Website",
+    "Reimagining Philanthropy Booth"
+   ],
+   "tags": [
+    "logo",
+    "branding",
+    "chat"
+   ],
+   "status": "done",
+   "source": "ExCo Secrets chat, 2026-10-15",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-15T12:00:00"
+  },
+  {
+   "title": "Core pitch: 'We don't build solutions. We find the problems worth building for.'",
+   "description": "Variants: bridge the gap 'between Issue and Idea'; close the loop from Issue -> Idea -> Innovation; research and validation unit embedded in SUTD. Teng Hwee: avoid 'student-led research collective' (confusing).",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Brand & Marketing",
+   "projects": [
+    "Brand & Website",
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "pitch",
+    "messaging",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-10-24",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-24T12:00:00"
+  },
+  {
+   "title": "Website: Innovation section and tier system",
+   "description": "KM: replace club features with a photo and descriptor or mapped path; consider showcasing our tier system. Friends drafting the site.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Brand & Marketing",
+   "projects": [
+    "Brand & Website"
+   ],
+   "tags": [
+    "website",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "ExCo Secrets chat, 2026-11-04",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-11-04T12:00:00"
+  },
+  {
+   "title": "Pitch deck for partners",
+   "description": "Suraj is drafting the deck and talking to Accenture.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Brand & Marketing",
+   "projects": [
+    "Brand & Website",
+    "Partnership Pipeline"
+   ],
+   "tags": [
+    "deck",
+    "pitch",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-20",
+   "author": "Suraj (Dusk)",
+   "related": [],
+   "createdAt": "2026-10-20T12:00:00"
+  },
+  {
+   "title": "Positioning one-pager: who we are, what we do, the gap, why SUTD",
+   "description": "Wei Hao's four questions to answer before outreach.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Brand & Marketing",
+   "projects": [
+    "Brand & Website"
+   ],
+   "tags": [
+    "positioning",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-24",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-24T12:00:00"
+  },
+  {
+   "title": "Understand the three funding types",
+   "description": "In-kind (venues etc.), income (own revenue like tickets) and grant funding.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Funding & Finance",
+   "projects": [
+    "Funding & Grants"
+   ],
+   "tags": [
+    "funding",
+    "basics",
+    "chat"
+   ],
+   "status": "done",
+   "source": "ExCo Secrets chat, 2026-10-03",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-03T12:00:00"
+  },
+  {
+   "title": "Pay norms for workshops",
+   "description": "Trainer fee typically 100% hourly for workshop time and about 50% for prep; part-timers around $11-12/h; $300 covers 6 people x 5h at $10/h.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Funding & Finance",
+   "projects": [
+    "Funding & Grants"
+   ],
+   "tags": [
+    "budget",
+    "workshops",
+    "chat"
+   ],
+   "status": "done",
+   "source": "ExCo Secrets chat, 2026-10-03",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-03T12:00:00"
+  },
+  {
+   "title": "BlueDot AI-safety events grant (RFE) - not pursuing for now",
+   "description": "Decision on 7 Oct: pool energy into problem discovery rather than AI safety; the BlueDot general grant remains an option.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Funding & Finance",
+   "projects": [
+    "Funding & Grants"
+   ],
+   "tags": [
+    "grant",
+    "decision",
+    "chat"
+   ],
+   "status": "shelved",
+   "source": "ExCo Secrets chat, 2026-10-07",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-07T12:00:00"
+  },
+  {
+   "title": "Bounded, measurable pilot-grant proposal",
+   "description": "Pitch a supervised pilot: success measured by independent quality review of Problem Briefs, evidence changes/confirms decisions, partner uptake, delivery cost and repeat demand; redesign if briefs go unused. Cites student-led precedents (Design for America, 180 Degrees Consulting, MIT D-Lab, OGP).",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Funding & Finance",
+   "projects": [
+    "Funding & Grants"
+   ],
+   "tags": [
+    "grant",
+    "pilot",
+    "metrics",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "ExCo Secrets chat, 2026-10-03",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-03T12:00:00"
+  },
+  {
+   "title": "Sponsor credits / merch from AI companies",
+   "description": "Suraj: offer outreach and merch placement in exchange for sponsor credits.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Funding & Finance",
+   "projects": [
+    "Funding & Grants"
+   ],
+   "tags": [
+    "sponsorship",
+    "merch",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-10-03",
+   "author": "Suraj (Dusk)",
+   "related": [],
+   "createdAt": "2026-10-03T12:00:00"
+  },
+  {
+   "title": "Budget proposal and expense tracking",
+   "description": "Teng Hwee owns the budget proposal and expense tracking while learning financial reporting.",
+   "category": "Problem Lab & ExCo > Club Strategy & Governance > Funding & Finance",
+   "projects": [
+    "Funding & Grants",
+    "Ops & Tooling"
+   ],
+   "tags": [
+    "budget",
+    "finance",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "ExCo Secrets chat, 2026-10-03",
+   "author": "Teng Hwee",
+   "related": [],
+   "createdAt": "2026-10-03T12:00:00"
+  },
+  {
+   "title": "Psychological First Aid (PFA) training for facilitators",
+   "description": "Extension of active listening for highly emotional people (also useful with autistic people in meltdown). Coursera course and Red Cross certification suggested for Amir and Josh.",
+   "category": "Problem Lab & ExCo > Learning & Skills",
+   "projects": [
+    "Active Listening & Negotiation Workshop"
+   ],
+   "tags": [
+    "training",
+    "pfa",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-09-29",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-29T12:00:00"
+  },
+  {
+   "title": "7 Cups listener training and Chris Voss negotiation material",
+   "description": "Sign up as a listener to practise facilitation without being forced to volunteer.",
+   "category": "Problem Lab & ExCo > Learning & Skills",
+   "projects": [
+    "Active Listening & Negotiation Workshop"
+   ],
+   "tags": [
+    "training",
+    "listening",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-09-29",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-29T12:00:00"
+  },
+  {
+   "title": "Cognitive reframing / 'manage your manager' model",
+   "description": "Step 1 PFA/active listening, step 2 calm-comfort-or-solve (spot cognitive distortions), step 3 next steps. Reframing asks six questions about the thought and its evidence.",
+   "category": "Problem Lab & ExCo > Learning & Skills",
+   "projects": [
+    "Active Listening & Negotiation Workshop"
+   ],
+   "tags": [
+    "training",
+    "reframing",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-09-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-30T12:00:00"
+  },
+  {
+   "title": "AI-assisted coding learning path (beginner to advanced)",
+   "description": "Guides from beginner to intermediate (spec-driven vibe coding) to advanced (harness engineering, MCP, evaluation, guardrails).",
+   "category": "Problem Lab & ExCo > Learning & Skills",
+   "projects": [
+    "Ops & Tooling"
+   ],
+   "tags": [
+    "ai-tools",
+    "learning",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-01",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-01T12:00:00"
+  },
+  {
+   "title": "Draft your LinkedIn goals first, then work towards them",
+   "description": "Write what you hope to claim for CCAs/projects, track the numbers as you go.",
+   "category": "Problem Lab & ExCo > Learning & Skills",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "career",
+    "linkedin",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-09-29",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-29T12:00:00"
+  },
+  {
+   "title": "Problem Lab methodology timeline",
+   "description": "What's the problem? -> how to solve it (we don't cover this) -> does the solution fully cover the problem? -> why isn't it adopted? -> what issues do users face?",
+   "category": "Problem Lab & ExCo > Problem Discovery & Research",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "methodology",
+    "core",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-09-26",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-09-26T12:00:00"
+  },
+  {
+   "title": "Validated Problem Briefs delivered to SUTD makers",
+   "description": "Interviews, field research, observation and expert conversations become evidence-backed briefs; sometimes the answer is 'we don't need to build anything'.",
+   "category": "Problem Lab & ExCo > Problem Discovery & Research",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "problem-briefs",
+    "core",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-26",
+   "author": "Josh Chua",
+   "related": [],
+   "createdAt": "2026-09-26T12:00:00"
+  },
+  {
+   "title": "Product-manage the builders",
+   "description": "Problem Lab doesn't build: it gives builders feedback so what's made matches what users want.",
+   "category": "Problem Lab & ExCo > Problem Discovery & Research",
+   "projects": [
+    "Problem Lab (club)"
+   ],
+   "tags": [
+    "product-management",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-09-26",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-26T12:00:00"
+  },
+  {
+   "title": "Transcribe SEEPO healthcare problem statements",
+   "description": "Photos from the Singapore Experience Exchange for Patient Organisations (Roche) to be transcribed into problem statements. Owner: Amir.",
+   "category": "Problem Lab & ExCo > Problem Discovery & Research",
+   "projects": [
+    "Healthcare & Eldercare Discovery"
+   ],
+   "tags": [
+    "seepo",
+    "transcription",
+    "chat"
+   ],
+   "status": "in-progress",
+   "source": "Problem Lab!! chat, 2026-09-25",
+   "author": "Amir Rahman",
+   "related": [],
+   "createdAt": "2026-09-25T12:00:00"
+  },
+  {
+   "title": "Satellite-data insights (EASOS, IPP Kenya)",
+   "description": "EASOS: value lies in integrating satellite data with command-and-control structures of Malaysian authorities. IPP Kenya: satellite data gives rural farmers insight and helps banks reduce lending risk.",
+   "category": "Problem Lab & ExCo > Problem Discovery & Research",
+   "projects": [
+    "Healthcare & Eldercare Discovery"
+   ],
+   "tags": [
+    "insights",
+    "satellite",
+    "chat"
+   ],
+   "status": "done",
+   "source": "Problem Lab!! chat, 2026-10-27",
+   "author": "Naimish (N 2)",
+   "related": [],
+   "createdAt": "2026-10-27T12:00:00"
+  },
+  {
+   "title": "User interviews: reducing reading friction for higher-ed students",
+   "description": "KM's MBA project needs 15-minute interviews on lengthy readings such as research papers; offered lunch/dinner as thanks.",
+   "category": "Problem Lab & ExCo > Problem Discovery & Research",
+   "projects": [],
+   "tags": [
+    "interviews",
+    "survey",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-19",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-19T12:00:00"
+  },
+  {
+   "title": "Help survey on EV / low-emission mobility adoption",
+   "description": "A student asked for survey feedback; may lead to work with cleantech companies.",
+   "category": "Problem Lab & ExCo > Problem Discovery & Research",
+   "projects": [],
+   "tags": [
+    "survey",
+    "mobility",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-11-05",
+   "author": "Michael Yiin (external)",
+   "related": [],
+   "createdAt": "2026-11-05T12:00:00"
+  },
+  {
+   "title": "Accenture University Innovation Challenge 2027",
+   "description": "Two-week AI case competition, teams of 4-5 from one university; interest form by 6 Nov, written answers by 13 Nov; top teams can win internships.",
+   "category": "Problem Lab & ExCo > External Opportunities > Hackathons & Competitions",
+   "projects": [],
+   "tags": [
+    "competition",
+    "accenture",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-10-26",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-26T12:00:00"
+  },
+  {
+   "title": "AI For Good Hackathon (NUS Computing)",
+   "description": "Teams of 3-5; pitch AI start-up ideas for social/environmental challenges; registration closes 15 Nov; optional Beijing exchange trip.",
+   "category": "Problem Lab & ExCo > External Opportunities > Hackathons & Competitions",
+   "projects": [],
+   "tags": [
+    "hackathon",
+    "ai",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-11-02",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-11-02T12:00:00"
+  },
+  {
+   "title": "Singapore Design Awards 2026 (NCSS and Govt Partnerships Office challenges)",
+   "description": "S$80,000 cash pool; submissions close 30 Nov.",
+   "category": "Problem Lab & ExCo > External Opportunities > Hackathons & Competitions",
+   "projects": [],
+   "tags": [
+    "design",
+    "competition",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-10-22",
+   "author": "Wei Hao",
+   "related": [],
+   "createdAt": "2026-10-22T12:00:00"
+  },
+  {
+   "title": "QBE AcceliCITY Humanitarian Challenge 2027",
+   "description": "Fully funded pilot up to AUD 100,000 with Red Cross partners; two themes: preparedness into lasting resilience, and better use of climate/risk information.",
+   "category": "Problem Lab & ExCo > External Opportunities > Hackathons & Competitions",
+   "projects": [],
+   "tags": [
+    "humanitarian",
+    "pilot",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-06",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-06T12:00:00"
+  },
+  {
+   "title": "Australian Space Architecture Challenge 2026 ('Care Without Borders')",
+   "description": "Design a lunar micro hospital; free worldwide registration, teams up to 5.",
+   "category": "Problem Lab & ExCo > External Opportunities > Hackathons & Competitions",
+   "projects": [],
+   "tags": [
+    "space",
+    "design",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-06",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-06T12:00:00"
+  },
+  {
+   "title": "BAGUS Together Groundup Launchpad (Jan-Mar 2027)",
+   "description": "10-week incubator for youth-led community ideas; workshops, mentors, charity partnerships.",
+   "category": "Problem Lab & ExCo > External Opportunities > Programmes & Grants",
+   "projects": [],
+   "tags": [
+    "incubator",
+    "community",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-11-03",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-11-03T12:00:00"
+  },
+  {
+   "title": "OpenAI Codex ambassadors (event or content)",
+   "description": "KM leaning content: one post a month, overlaps with course/learning content; asked the team's opinion.",
+   "category": "Problem Lab & ExCo > External Opportunities > Programmes & Grants",
+   "projects": [],
+   "tags": [
+    "ai-tools",
+    "ambassador",
+    "chat"
+   ],
+   "status": "exploring",
+   "source": "Problem Lab!! chat, 2026-10-30",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-30T12:00:00"
+  },
+  {
+   "title": "COP31 youth delegation (MYF, Antalya, 9-20 Nov)",
+   "description": "Application for badge access; funding not included.",
+   "category": "Problem Lab & ExCo > External Opportunities > Programmes & Grants",
+   "projects": [],
+   "tags": [
+    "climate",
+    "cop31",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-20",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-20T12:00:00"
+  },
+  {
+   "title": "Harvard Summer School (Summer 2027) as visiting student",
+   "description": "KM contacted them as advisor; preliminary applications open early December; plan PSEA, work, course choice.",
+   "category": "Problem Lab & ExCo > External Opportunities > Programmes & Grants",
+   "projects": [],
+   "tags": [
+    "study",
+    "summer",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-09-29",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-29T12:00:00"
+  },
+  {
+   "title": "ASEAN 2027 Liaison Officer (apply by 13 Nov)",
+   "description": "NYC hosting ASEAN delegations; endorsement via Skilio available.",
+   "category": "Problem Lab & ExCo > External Opportunities > Programmes & Grants",
+   "projects": [],
+   "tags": [
+    "asean",
+    "volunteering",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-28",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-28T12:00:00"
+  },
+  {
+   "title": "Patient Voices Symposium (13 Nov)",
+   "description": "Patient and public involvement in health research and education.",
+   "category": "Problem Lab & ExCo > External Opportunities > Talks & Summits",
+   "projects": [
+    "Healthcare & Eldercare Discovery"
+   ],
+   "tags": [
+    "healthcare",
+    "ppi",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-10-09",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-09T12:00:00"
+  },
+  {
+   "title": "Technology Student Leaders Alliance (TSLA), 6 Nov at IMDA",
+   "description": "Student tech-club leaders; speakers from IMDA and MDDI; dinner provided.",
+   "category": "Problem Lab & ExCo > External Opportunities > Talks & Summits",
+   "projects": [],
+   "tags": [
+    "student-leaders",
+    "networking",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-10-22",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-22T12:00:00"
+  },
+  {
+   "title": "AlterCOP Singapore: Nature Week (19-22 Oct) and Climate Week (17-20 Nov)",
+   "description": "170+ sessions on climate and COP.",
+   "category": "Problem Lab & ExCo > External Opportunities > Talks & Summits",
+   "projects": [],
+   "tags": [
+    "climate",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-05",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-05T12:00:00"
+  },
+  {
+   "title": "Global SME Finance Forum - Learning Day (20 Nov)",
+   "description": "Interactive sessions plus FinTech Festival study tours.",
+   "category": "Problem Lab & ExCo > External Opportunities > Talks & Summits",
+   "projects": [],
+   "tags": [
+    "fintech",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-10-20",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-20T12:00:00"
+  },
+  {
+   "title": "30-60 minute chat with Dr Peter Kelly (Aalto) on 26 Nov",
+   "description": "Hosted by Yan Han; wants to meet students in the entrepreneurship scene between 2-4pm.",
+   "category": "Problem Lab & ExCo > External Opportunities > Talks & Summits",
+   "projects": [],
+   "tags": [
+    "entrepreneurship",
+    "chat"
+   ],
+   "status": "new",
+   "source": "ExCo Secrets chat, 2026-10-29",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-10-29T12:00:00"
+  },
+  {
+   "title": "Nobel Summit (Nobel laureates + AI leaders)",
+   "description": "KM attending and shared the link; possible networking for the team.",
+   "category": "Problem Lab & ExCo > External Opportunities > Talks & Summits",
+   "projects": [],
+   "tags": [
+    "summit",
+    "ai",
+    "chat"
+   ],
+   "status": "new",
+   "source": "Problem Lab!! chat, 2026-09-28",
+   "author": "Kai Ming (KM)",
+   "related": [],
+   "createdAt": "2026-09-28T12:00:00"
+  }
+ ]
+}

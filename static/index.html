@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constellarium</title>
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <button id="btnSide" class="ghost icon" title="Hide / show sidebar" aria-label="Toggle sidebar">&#9776;</button>
+  <div class="brand"><span class="logo">&#10022;</span> Constellarium</div>
+  <nav class="tabs" id="tabs">
+    <button data-view="graph" class="active">Graph</button>
+    <button data-view="ideas">Ideas</button>
+    <button data-view="manage">Categories &amp; Projects</button>
+  </nav>
+  <input id="search" type="search" placeholder="Search ideas, tags, people…" autocomplete="off">
+  <div class="spacer"></div>
+  <button id="btnImport" class="ghost">Import</button>
+  <button id="btnExport" class="ghost">Export</button>
+  <button id="btnLogout" class="ghost" hidden>Log out</button>
+  <button id="btnNew" class="primary">+ New idea</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="stats" id="stats"></div>
+    <section>
+      <h4>Categories <button class="mini" id="clearFilters" title="Clear all filters">clear filters</button></h4>
+      <div id="catTree" class="tree"></div>
+    </section>
+    <section>
+      <h4>Projects</h4>
+      <div id="projList" class="chips-col"></div>
+    </section>
+    <section>
+      <h4>Status</h4>
+      <div id="statusList" class="chips"></div>
+    </section>
+    <section>
+      <h4>Tags</h4>
+      <div id="tagList" class="chips"></div>
+    </section>
+  </aside>
+
+  <main class="main">
+    <!-- GRAPH -->
+    <div id="view-graph" class="view">
+      <div class="graph-toolbar">
+        <label>Layout
+          <select id="gMode">
+            <option value="board">Tables (categories → projects)</option>
+            <option value="treemap">Zoomable treemap (all ideas, click to zoom)</option>
+            <option value="full">Full network (ideas · categories · projects)</option>
+            <option value="map">Category ↔ Project map</option>
+          </select>
+        </label>
+        <label class="chk gx"><input type="checkbox" id="gIdeas" checked> Ideas</label>
+        <label class="chk gx"><input type="checkbox" id="gTags"> Tags</label>
+        <label class="chk gx"><input type="checkbox" id="gRelated" checked> Idea links</label>
+        <div class="spacer"></div>
+        <button class="ghost gx" id="gFit">Fit</button>
+        <button class="ghost gx" id="gReheat">Re-layout</button>
+        <button class="ghost gx" id="gPng">Save PNG</button>
+      </div>
+      <div class="graph-wrap">
+        <div id="board" class="board"></div>
+        <canvas id="graph"></canvas>
+        <div class="zoom" id="zoomCtl">
+          <button id="zIn" title="Zoom in" aria-label="Zoom in">+</button>
+          <button id="zOut" title="Zoom out" aria-label="Zoom out">&minus;</button>
+          <button id="zFit" title="Reset / fit" aria-label="Reset zoom">&#10530;</button>
+        </div>
+        <div class="legend" id="legend"></div>
+        <div class="hint" id="graphHint"></div>
+        <div class="empty" id="graphEmpty" hidden></div>
+        <div class="tooltip" id="tooltip" hidden></div>
+        <aside class="detail" id="detail" hidden></aside>
+      </div>
+    </div>
+
+    <!-- IDEAS -->
+    <div id="view-ideas" class="view" hidden>
+      <div class="list-toolbar">
+        <label>Sort
+          <select id="sortBy">
+            <option value="updated">Recently updated</option>
+            <option value="created">Newest</option>
+            <option value="title">Title A–Z</option>
+            <option value="category">Category</option>
+          </select>
+        </label>
+        <label>Group by
+          <select id="groupBy">
+            <option value="">None</option>
+            <option value="category">Category</option>
+            <option value="project">Project</option>
+            <option value="status">Status</option>
+            <option value="author">Author</option>
+          </select>
+        </label>
+        <span id="listCount" class="muted"></span>
+      </div>
+      <div id="ideaList" class="cards"></div>
+    </div>
+
+    <!-- MANAGE -->
+    <div id="view-manage" class="view" hidden>
+      <div class="manage">
+        <section class="panel">
+          <h3>Categories <button class="primary small" id="addCat">+ Category</button></h3>
+          <p class="muted">Nest categories to build a hierarchy (e.g. Technology › AI). Ideas inherit their category's place in the graph.</p>
+          <div id="manageCats" class="rows"></div>
+        </section>
+        <section class="panel">
+          <h3>Projects <button class="primary small" id="addProj">+ Project</button></h3>
+          <p class="muted">Link ideas to the projects they feed. The graph connects categories to projects through shared ideas.</p>
+          <div id="manageProjs" class="rows"></div>
+        </section>
+        <section class="panel danger-zone">
+          <h3>Data</h3>
+          <p class="muted">Stored locally in <code>data/store.json</code> (auto-backups in <code>data/backups/</code>).</p>
+          <div class="row-btns">
+            <button class="ghost" id="loadSample">Load sample data</button>
+            <button class="ghost danger" id="clearAll">Delete everything…</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Idea dialog -->
+<dialog id="exportDlg">
+  <form method="dialog" id="exportForm" class="form">
+    <h3>Export ideas</h3>
+    <p class="muted small" id="expInfo"></p>
+    <label>What to export
+      <select name="scope">
+        <option value="view">Only what I am currently filtering to</option>
+        <option value="all">Everything (all ideas)</option>
+      </select>
+    </label>
+    <div class="row2">
+      <label>Filter by category <small>(includes sub-categories)</small><select name="cat" id="expCat"></select></label>
+      <label>Filter by tag<select name="tag" id="expTag"></select></label>
+    </div>
+    <label>Format
+      <select name="format">
+        <option value="csv">CSV (spreadsheet; re-importable)</option>
+        <option value="md">Markdown report (grouped by category, with contacts)</option>
+        <option value="json">JSON (re-importable; "Everything" = full backup)</option>
+      </select>
+    </label>
+    <div class="actions"><button type="button" class="ghost" id="expCancel">Cancel</button><button class="primary" id="expGo">Export</button></div>
+  </form>
+</dialog>
+
+<dialog id="ideaDlg">
+  <form method="dialog" id="ideaForm" class="form">
+    <h3 id="ideaDlgTitle">New idea</h3>
+    <label>Title<input name="title" required maxlength="200" autocomplete="off"></label>
+    <label>Description<textarea name="description" rows="4"></textarea></label>
+    <div class="grid2">
+      <label>Category
+        <select name="category" id="fCategory"></select>
+      </label>
+      <label>…or new category <small>(use “Parent &gt; Child”)</small>
+        <input name="newCategory" placeholder="e.g. Technology > AI" autocomplete="off">
+      </label>
+    </div>
+    <fieldset>
+      <legend>Projects this idea feeds</legend>
+      <div id="fProjects" class="checks"></div>
+      <input name="newProject" placeholder="…or add new project(s), comma separated" autocomplete="off">
+    </fieldset>
+    <div class="grid2">
+      <label>Tags <small>(comma separated)</small><input name="tags" autocomplete="off"></label>
+      <label>Author / team member<input name="author" autocomplete="off" list="authorList"></label>
+  <div class="row2">
+    <label>Primary contact <small>(name · email / Telegram / phone)</small><input name="primaryContact" maxlength="200" autocomplete="off" list="contactList"></label>
+    <label>Secondary contact <small>(backup person for context)</small><input name="secondaryContact" maxlength="200" autocomplete="off" list="contactList"></label>
+  </div>
+  <datalist id="contactList"></datalist>
+    </div>
+    <label>Source / reference <small>(chat, meeting, link)</small><input name="source" autocomplete="off"></label>
+    <datalist id="authorList"></datalist>
+    <div class="grid2">
+      <label>Status
+        <select name="status">
+          <option>new</option><option>exploring</option><option>in-progress</option><option>done</option><option>shelved</option>
+        </select>
+      </label>
+      <label>Related ideas <small>(search, tick to link)</small>
+        <input id="fRelatedSearch" placeholder="filter…" autocomplete="off">
+      </label>
+    </div>
+    <div id="fRelated" class="checks tall"></div>
+    <div class="dlg-actions">
+      <button type="button" class="ghost danger" id="ideaDelete" hidden>Delete</button>
+      <div class="spacer"></div>
+      <button type="button" class="ghost" id="ideaCancel">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Generic entity dialog (category / project) -->
+<dialog id="entDlg">
+  <form method="dialog" id="entForm" class="form">
+    <h3 id="entTitle"></h3>
+    <label>Name<input name="name" required maxlength="120" autocomplete="off"></label>
+    <label id="entParentWrap">Parent category<select name="parent" id="entParent"></select></label>
+    <label>Description<textarea name="description" rows="3"></textarea></label>
+    <label>Colour<input type="color" name="color"></label>
+    <div class="dlg-actions">
+      <button type="button" class="ghost danger" id="entDelete" hidden>Delete</button>
+      <div class="spacer"></div>
+      <button type="button" class="ghost" id="entCancel">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Import dialog -->
+<dialog id="impDlg">
+  <form method="dialog" class="form wide" id="impForm">
+    <h3>Import ideas</h3>
+    <p class="muted">Paste <b>CSV</b> or <b>JSON</b>, or choose a file. Categories and projects are created automatically by name. Ideas with an existing title are updated, not duplicated.</p>
+    <div class="row-btns">
+      <input type="file" id="impFile" accept=".csv,.json,.txt,.tsv">
+      <a href="#" id="impTemplate">Download CSV template</a>
+    </div>
+    <textarea id="impText" rows="10" placeholder="title,description,category,projects,tags,author,status,related&#10;Solar bus stops,Roof panels power displays,Sustainability > Energy,Smart City;Campus Pilot,solar;iot,Aisha,exploring,"></textarea>
+    <details>
+      <summary>Accepted columns / keys</summary>
+      <p class="muted small"><b>title</b> (required), <b>description</b>, <b>category</b> (“Parent &gt; Child” makes a hierarchy), <b>projects</b> (separate with <code>;</code>), <b>tags</b> (<code>;</code> or <code>,</code> separated), <b>author</b>, <b>primaryContact</b>, <b>secondaryContact</b>, <b>status</b> (new / exploring / in-progress / done / shelved), <b>related</b> (titles of other ideas, <code>;</code> separated), <b>createdAt</b>.<br>
+      JSON may be a plain array of ideas or <code>{"ideas":[…],"projects":[…],"categories":[…]}</code>.</p>
+    </details>
+    <div id="impPreview" class="muted"></div>
+    <div class="dlg-actions">
+      <div class="spacer"></div>
+      <button type="button" class="ghost" id="impCancel">Cancel</button>
+      <button type="submit" class="primary" id="impGo" disabled>Import</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Login (only shown when the server requires a password, e.g. on Vercel) -->
+<dialog id="loginDlg" class="nodismiss">
+  <form method="dialog" id="loginForm" class="form">
+    <h3>Constellarium login</h3>
+    <p class="muted small">This session is locked.</p>
+    <label>Password<input type="password" name="password" autocomplete="current-password" required></label>
+    <div id="loginErr" class="small" style="color:var(--danger);min-height:1.2em"></div>
+    <div class="dlg-actions"><div class="spacer"></div><button type="submit" class="primary">Log in</button></div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" hidden></div>
+<script src="graph.js"></script>
+<script src="board.js"></script>
+<script src="treemap.js"></script>
+<script src="app.js"></script>
+<script>/* keep-alive ping: only the local exe needs it (to know when its window closes); never on the web */
+if(/^(127\.0\.0\.1|localhost)$/.test(location.hostname)){setInterval(()=>fetch('/api/ping').catch(()=>{}),10000);fetch('/api/ping').catch(()=>{});}</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{"ideas":[
+{"title":"Solar-powered bus stops","description":"Roof panels power displays and USB charging.","category":"Sustainability > Energy","projects":"Smart City;Campus Pilot","tags":"solar;iot","author":"Sample","status":"exploring"},
+{"title":"Campus food-waste tracker","description":"Weigh and log canteen waste to find patterns.","category":"Sustainability > Waste","projects":"Campus Pilot","tags":"data;iot","author":"Sample","status":"new"},
+{"title":"AI study buddy for lectures","description":"Summarise recordings into flashcards.","category":"Technology > AI","projects":"Learning Hub","tags":"ai;education","author":"Sample","status":"in-progress","related":"Campus food-waste tracker"},
+{"title":"Open data portal for transport","description":"Unified API for bus and train data.","category":"Technology > Data","projects":"Smart City","tags":"data;open-source","author":"Sample","status":"new"},
+{"title":"Mentor matching app","description":"Match students with alumni by interests.","category":"Community","tags":"education","author":"Sample","status":"new"}
+]}
