@@ -624,7 +624,7 @@ class Handler(BaseHTTPRequestHandler):
                 result = self._route(store, method, parts, body)
                 if result is None:
                     return self._json({"error": "not found"}, 404)
-                save(store, force_backup=(parts[:1] in (["import"], ["replace"], ["clear"], ["reseed"])))
+                save(store, force_backup=(parts[:1] in (["import"], ["replace"], ["clear"], ["reseed"]) or parts[:2] == ["ideas", "delete"]))
                 return self._json(result)
         except StorageError as e:
             return self._json({"error": str(e)}, 503)
@@ -647,6 +647,28 @@ class Handler(BaseHTTPRequestHandler):
         if kind == "clear" and method == "POST":
             store.update(empty_store())
             return {"ok": True}
+        if kind == "ideas" and method == "POST" and parts[1:] == ["delete"]:   # bulk delete; returns what was removed so the UI can offer Undo
+            ids = {x for x in (body.get("ids") or []) if isinstance(x, str)}
+            removed = [i for i in store["ideas"] if i["id"] in ids]
+            links = [[i["id"], r] for i in store["ideas"] if i["id"] not in ids for r in i.get("related", []) if r in ids]
+            store["ideas"] = [i for i in store["ideas"] if i["id"] not in ids]
+            for i in store["ideas"]:
+                i["related"] = [r for r in i.get("related", []) if r not in ids]
+            return {"deleted": removed, "links": links}
+        if kind == "ideas" and method == "POST" and parts[1:] == ["restore"]:  # Undo: put deleted ideas back with their original ids + links
+            have = {i["id"] for i in store["ideas"]}
+            n = 0
+            for raw in body.get("ideas") or []:
+                if isinstance(raw, dict) and raw.get("id") and raw["id"] not in have:
+                    idea = clean_idea(store, raw, existing={"id": raw["id"], "createdAt": s(raw.get("createdAt"), 40) or now()})
+                    store["ideas"].append(idea)
+                    have.add(idea["id"])
+                    n += 1
+            for a, b in body.get("links") or []:
+                x = next((i for i in store["ideas"] if i["id"] == a), None)
+                if x is not None and b in have and b not in x.setdefault("related", []):
+                    x["related"].append(b)
+            return {"restored": n}
         if kind == "ideas":
             if method == "POST" and len(parts) == 1:
                 idea = clean_idea(store, body)

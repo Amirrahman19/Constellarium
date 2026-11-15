@@ -102,6 +102,12 @@
           </select>
         </label>
         <span id="listCount" class="muted"></span>
+        <div class="spacer"></div>
+        <span id="selBar" hidden><span id="selCount" class="muted small"></span>
+          <button class="ghost small" id="selAll" title="Tick every idea currently shown">Select all shown</button>
+          <button class="ghost small danger" id="selDel" disabled>Delete selected</button>
+          <button class="ghost small" id="selCancel">Cancel</button></span>
+        <button class="ghost small" id="selToggle" title="Pick several ideas to delete at once">Select</button>
       </div>
       <div id="ideaList" class="cards"></div>
     </div>

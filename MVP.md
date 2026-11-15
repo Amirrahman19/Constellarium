@@ -38,3 +38,4 @@ Web: 	ools/webtest.py passes (login gate, database seed/persist/backup, Vercel c
 | 2026-11-12 | Amir | Put the coverage matrix in Constellarium too | Done in source; exe rebuilt (headless checks pending) |
 | 2026-11-12 | Amir | Remove the coverage matrix; add a zoomable treemap, only to Constellarium | Done in source; exe rebuild running |
 | 2026-11-13 | Amir | Switch Constellarium to web deployment on Vercel; update the project folder; no feature changes; then commit and push (private repo Amirrahman19/Constellarium); after the push delete the exe, dist and build folders | Done in source (api/index.py, vercel.json, web mode in core.py); see HANDOFF for what is verified |
+| 2026-11-15 | Amir | Add a visible feature to delete ideas or sub-ideas, in both apps | Done locally (not committed/pushed) |

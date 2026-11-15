@@ -73,6 +73,28 @@ try:
     ci = next(i for i in cdata["ideas"] if i["title"] == "contact import")
     check("contacts survive import", ci["primaryContact"] == "Cy" and ci["secondaryContact"] == "Di")
     check("delete idea", req("DELETE", f"/api/ideas/{iid}")[0] == 200)
+    # ---- bulk delete + undo (restore keeps ids and links)
+    ia = json.loads(req("POST", "/api/ideas", {"title": "del A"})[1])
+    ib = json.loads(req("POST", "/api/ideas", {"title": "del B", "related": [ia["id"]]})[1])
+    code, raw = req("POST", "/api/ideas/delete", {"ids": [ia["id"]]})
+    dres = json.loads(raw)
+    cur = json.loads(req("GET", "/api/data")[1])
+    check("bulk delete removes the idea and its back-links", code == 200 and [d["id"] for d in dres["deleted"]] == [ia["id"]]
+          and not any(i["id"] == ia["id"] for i in cur["ideas"]) and ia["id"] not in next(i for i in cur["ideas"] if i["id"] == ib["id"])["related"])
+    code, raw = req("POST", "/api/ideas/restore", {"ideas": dres["deleted"], "links": dres["links"]})
+    cur = json.loads(req("GET", "/api/data")[1])
+    back = next((i for i in cur["ideas"] if i["id"] == ia["id"]), None)
+    check("undo restores the idea with the same id and the link", code == 200 and json.loads(raw)["restored"] == 1 and back is not None
+          and back["title"] == "del A" and ia["id"] in next(i for i in cur["ideas"] if i["id"] == ib["id"])["related"],
+          f"status {code} restored={raw[:60]} back={back is not None} B.related={next(i for i in cur['ideas'] if i['id'] == ib['id'])['related']}")
+    code, raw = req("POST", "/api/ideas/restore", {"ideas": dres["deleted"], "links": dres["links"]})
+    check("restoring twice does not duplicate", json.loads(raw)["restored"] == 0)
+    code, raw = req("POST", "/api/ideas/delete", {"ids": [ia["id"], ib["id"], "does-not-exist"]})
+    cur = json.loads(req("GET", "/api/data")[1])
+    check("bulk delete of several ids (unknown id ignored)", code == 200 and len(json.loads(raw)["deleted"]) == 2
+          and not any(i["title"].startswith("del ") for i in cur["ideas"]),
+          f"status {code} deleted={len(json.loads(raw)['deleted'])} leftovers={[i['title'] for i in cur['ideas'] if i['title'].startswith('del ')]}")
+    check("bulk delete wrote a safety backup", any((home / "backups").glob("store-*.json")))
     n0 = len(json.loads(req("GET", "/api/data")[1])["ideas"])
     code, raw = req("POST", "/api/reseed", {})
     n1 = len(json.loads(req("GET", "/api/data")[1])["ideas"])

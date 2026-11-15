@@ -23,7 +23,51 @@ function toast(msg, ms = 2600) {
   const t = $('#toast'); t.textContent = msg; t.hidden = false;
   clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), ms);
 }
+function toastAction(msg, label, fn, ms = 9000) {      // a toast with one button (used for Undo)
+  const t = $('#toast'); t.innerHTML = `${esc(msg)} <button class="toast-btn">${esc(label)}</button>`; t.hidden = false;
+  t.querySelector('button').onclick = async () => { t.hidden = true; await fn(); };
+  clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), ms);
+}
 async function reload() { S = await api('GET', '/api/data'); renderAll(); }
+
+/* ---------- delete ideas (one or many) with Undo ---------- */
+let selMode = false; const selIds = new Set();
+async function deleteIdeas(ids) {
+  const items = S.ideas.filter(i => ids.includes(i.id));
+  if (!items.length) return;
+  const name = items.length === 1 ? `“${items[0].title}”` : `${items.length} ideas`;
+  if (!confirm(`Delete ${name}?\n\nYou can undo right after.`)) return;
+  try {
+    const r = await api('POST', '/api/ideas/delete', { ids: items.map(i => i.id) });
+    $('#detail').hidden = true; if (graph) graph.selected = null; selIds.clear();
+    if (typeof tmSel !== 'undefined' && ids.includes(tmSel)) tmSel = null;       // treemap selection
+    if ($('#ideaDlg').open) $('#ideaDlg').close();
+    await reload();
+    toastAction(`Deleted ${name}`, 'Undo', async () => {
+      try { await api('POST', '/api/ideas/restore', { ideas: r.deleted, links: r.links }); await reload(); toast('Restored'); }
+      catch (err) { toast('Could not undo: ' + err.message, 4000); }
+    });
+  } catch (err) { toast('Could not delete: ' + err.message, 4000); }
+}
+function updateSelBar() {
+  $('#selBar').hidden = !selMode; $('#selToggle').textContent = selMode ? 'Done' : 'Select';
+  $('#selCount').textContent = selIds.size + ' selected'; $('#selDel').disabled = !selIds.size;
+}
+async function deleteEntity(kind, id) {
+  const e = (kind === 'cat' ? S.categories : S.projects).find(x => x.id === id);
+  if (!e) return;
+  let msg;
+  if (kind === 'cat') {
+    const n = S.ideas.filter(i => i.category === id).length, k = S.categories.filter(c => c.parent === id).length;
+    msg = `Delete the category “${e.name}”?\n\n${k ? `${k} sub-categor${k === 1 ? 'y' : 'ies'} and ` : ''}${n} idea${n === 1 ? '' : 's'} directly inside it ${n === 1 ? 'moves' : 'move'} up one level. No ideas are deleted.\n(To delete ideas, use Select on the Ideas tab.)`;
+  } else {
+    const n = S.ideas.filter(i => (i.projects || []).includes(id)).length;
+    msg = `Delete the project “${e.name}”?\n\n${n} idea${n === 1 ? '' : 's'} ${n === 1 ? 'stays' : 'stay'}, but ${n === 1 ? 'loses' : 'lose'} this project link.`;
+  }
+  if (!confirm(msg)) return;
+  try { await api('DELETE', (kind === 'cat' ? '/api/categories/' : '/api/projects/') + id); if (F.cat === id) F.cat = null; if (F.project === id) F.project = null; await reload(); toast('Deleted'); }
+  catch (err) { toast('Could not delete: ' + err.message, 4000); }
+}
 
 /* ---------- derived data ---------- */
 const catById = () => new Map(S.categories.map(c => [c.id, c]));
@@ -202,7 +246,7 @@ function showDetail(n) {
       ${(i.related || []).length ? `<div class="sec"><b>Related ideas</b><ul>${i.related.map(r => S.ideas.find(x => x.id === r)).filter(Boolean).map(ideaLi).join('')}</ul></div>` : ''}
       ${(i.primaryContact || i.secondaryContact) ? `<div class="sec"><b>Contacts</b>${i.primaryContact ? `<div><span class="muted small">Primary</span> ${esc(i.primaryContact)}</div>` : ''}${i.secondaryContact ? `<div><span class="muted small">Secondary</span> ${esc(i.secondaryContact)}</div>` : ''}</div>` : ''}
       <div class="sec muted small">${i.author ? 'By ' + esc(i.author) + ' · ' : ''}${esc((i.createdAt || '').slice(0, 10))}${i.source ? '<br>Source: ' + esc(i.source) : ''}</div>
-      <div class="actions"><button class="primary small" data-edit="${i.id}">Edit</button></div>`;
+      <div class="actions"><button class="primary small" data-edit="${i.id}">Edit</button><button class="small danger" data-del="${i.id}">Delete</button></div>`;
   } else if (n.type === 'category') {
     const c = n.data, ids = subtreeIds(c.id), list = S.ideas.filter(i => ids.has(i.category));
     const pc = new Map(); for (const i of list) for (const p of i.projects || []) pc.set(p, (pc.get(p) || 0) + 1);
@@ -235,7 +279,8 @@ function renderList() {
   $('#listCount').textContent = `${ideas.length} of ${S.ideas.length} ideas`;
   const card = i => {
     const c = cats.get(i.category);
-    return `<div class="card" data-idea="${i.id}" style="--c:${esc(c ? c.color : 'var(--border)')}">
+    return `<div class="card${selMode && selIds.has(i.id) ? ' picked' : ''}" data-idea="${i.id}" style="--c:${esc(c ? c.color : 'var(--border)')}">
+      ${selMode ? `<input type="checkbox" class="selbox" ${selIds.has(i.id) ? 'checked' : ''} tabindex="-1" aria-label="Select">` : `<button class="cardx" data-del="${i.id}" title="Delete this idea" aria-label="Delete idea">&times;</button>`}
       <h5>${esc(i.title)}</h5>${i.description ? `<p>${esc(i.description)}</p>` : ''}
       <div class="meta">${c ? `<span class="badge">${esc(catPath(c.id))}</span>` : '<span class="badge">uncategorised</span>'}
       <span class="badge status-${esc(i.status)}">${esc(i.status)}</span>
@@ -258,15 +303,16 @@ function renderList() {
     html = [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([k, arr]) => `<h4 class="group-h">${esc(k)} <span class="badge">${arr.length}</span></h4>` + arr.map(card).join('')).join('');
   }
   $('#ideaList').innerHTML = html || `<div class="list-empty">${S.ideas.length ? 'No ideas match the current filters.' : 'No ideas yet — use “Import” or “+ New idea”.'}</div>`;
+  updateSelBar();
 }
 
 /* ---------- manage ---------- */
 function renderManage() {
   const counts = new Map(); for (const i of S.ideas) if (i.category) counts.set(i.category, (counts.get(i.category) || 0) + 1);
-  const row = (c, d) => `<div class="row" style="margin-left:${d * 18}px"><span class="dot" style="background:${esc(c.color)}"></span><span class="name">${esc(c.name)}</span><span class="muted small">${counts.get(c.id) || 0}</span><button class="small" data-editcat="${c.id}">Edit</button></div>` + childrenOf(c.id).map(k => row(k, d + 1)).join('');
+  const row = (c, d) => `<div class="row" style="margin-left:${d * 18}px"><span class="dot" style="background:${esc(c.color)}"></span><span class="name">${esc(c.name)}</span><span class="muted small">${counts.get(c.id) || 0}</span><button class="small" data-editcat="${c.id}">Edit</button><button class="small danger" data-delcat="${c.id}">Delete</button></div>` + childrenOf(c.id).map(k => row(k, d + 1)).join('');
   $('#manageCats').innerHTML = childrenOf(null).map(c => row(c, 0)).join('') || '<span class="muted">No categories yet.</span>';
   const pc = new Map(); for (const i of S.ideas) for (const p of i.projects || []) pc.set(p, (pc.get(p) || 0) + 1);
-  $('#manageProjs').innerHTML = S.projects.map(p => `<div class="row"><span class="dot" style="background:${esc(p.color)}"></span><span class="name" title="${esc(p.description)}">${esc(p.name)}</span><span class="muted small">${pc.get(p.id) || 0}</span><button class="small" data-editproj="${p.id}">Edit</button></div>`).join('') || '<span class="muted">No projects yet.</span>';
+  $('#manageProjs').innerHTML = S.projects.map(p => `<div class="row"><span class="dot" style="background:${esc(p.color)}"></span><span class="name" title="${esc(p.description)}">${esc(p.name)}</span><span class="muted small">${pc.get(p.id) || 0}</span><button class="small" data-editproj="${p.id}">Edit</button><button class="small danger" data-delproj="${p.id}">Delete</button></div>`).join('') || '<span class="muted">No projects yet.</span>';
 }
 
 function renderAll() {
@@ -476,6 +522,10 @@ async function loadSample() {
 
 /* ---------- wiring ---------- */
 document.addEventListener('click', e => {
+  const del = e.target.closest('[data-del],[data-delcat],[data-delproj]');
+  if (del) { e.stopPropagation(); if (del.dataset.del) deleteIdeas([del.dataset.del]); else if (del.dataset.delcat) deleteEntity('cat', del.dataset.delcat); else deleteEntity('proj', del.dataset.delproj); return; }
+  const pick = selMode && e.target.closest('#ideaList .card');       // in Select mode a click on a card ticks it instead of opening it
+  if (pick) { const id = pick.dataset.idea; selIds.has(id) ? selIds.delete(id) : selIds.add(id); renderList(); return; }
   const t = e.target.closest('[data-cat],[data-proj],[data-status],[data-tag],[data-idea],[data-edit],[data-editcat],[data-editproj],[data-gocat],[data-goproj],[data-gotag]');
   if (e.target.id === 'dClose') { $('#detail').hidden = true; if (graph) { graph.selected = null; graph.draw(); } return; }
   if (!t) return;
@@ -520,7 +570,11 @@ $('#exportForm').onsubmit = doExport;
 $('#expCancel').onclick = () => $('#exportDlg').close();
 $('#ideaForm').onsubmit = saveIdea;
 $('#ideaCancel').onclick = () => $('#ideaDlg').close();
-$('#ideaDelete').onclick = async () => { if (confirm('Delete this idea?')) { await api('DELETE', '/api/ideas/' + editing); $('#ideaDlg').close(); toast('Deleted'); reload(); } };
+$('#ideaDelete').onclick = () => deleteIdeas([editing]);
+$('#selToggle').onclick = () => { selMode = !selMode; selIds.clear(); renderList(); };
+$('#selAll').onclick = () => { for (const i of filteredIdeas()) selIds.add(i.id); renderList(); };
+$('#selDel').onclick = () => deleteIdeas([...selIds]);
+$('#selCancel').onclick = () => { selMode = false; selIds.clear(); renderList(); };
 $('#fRelatedSearch').oninput = () => renderRelated($$('#fRelated input:checked').map(x => x.value));
 $('#entForm').onsubmit = saveEntity;
 $('#entCancel').onclick = () => $('#entDlg').close();
@@ -544,13 +598,25 @@ function openLogin() {
   $('#loginForm').password.focus();
 }
 $('#loginDlg').addEventListener('cancel', e => e.preventDefault());   // can't Esc past the login
+// A deployment problem (no database / no password configured / database unreachable) must be obvious, not a silently empty app.
+function showSetupProblem(e) {
+  const m = String((e && e.message) || e);
+  let fix = 'Check the deployment logs in Vercel.';
+  if (/CONSTELLARIUM_PASSWORD/.test(m)) fix = 'In Vercel open <b>Settings → Environment Variables</b>, add <b>CONSTELLARIUM_PASSWORD</b> (the password you will log in with), then <b>Redeploy</b>.';
+  else if (/No database/i.test(m)) fix = 'In Vercel open <b>Storage</b>, create or connect a <b>Neon</b> database to this project, then <b>Redeploy</b>. Your ideas are loaded into it automatically the first time you log in.';
+  else if (/database|storage/i.test(m)) fix = 'The database could not be reached. Check that the Neon connection variables are present in <b>Settings → Environment Variables</b> and redeploy.';
+  renderAll();
+  const box = $('#graphEmpty');
+  box.hidden = false;
+  box.innerHTML = `<h3 style="margin:0;color:var(--text)">Your ideas can't be loaded yet</h3><div style="margin:8px 0;color:var(--danger)">${esc(m)}</div><div>${fix}</div>`;
+}
 $('#loginForm').onsubmit = async e => {
   e.preventDefault();
   try {
     await api('POST', '/api/login', { password: $('#loginForm').password.value });
-    $('#loginDlg').close(); $('#loginForm').reset(); $('#loginErr').textContent = ''; $('#btnLogout').hidden = false;
-    await reload();
-  } catch (err) { $('#loginErr').textContent = err.message; }
+  } catch (err) { $('#loginErr').textContent = err.message; return; }
+  $('#loginDlg').close(); $('#loginForm').reset(); $('#loginErr').textContent = ''; $('#btnLogout').hidden = false;
+  try { await reload(); } catch (err) { showSetupProblem(err); }
 };
 $('#btnLogout').onclick = async () => { await api('POST', '/api/logout', {}); location.reload(); };
 
@@ -559,11 +625,12 @@ $('#btnLogout').onclick = async () => { await api('POST', '/api/logout', {}); lo
     const auth = await api('GET', '/api/auth');
     $('#btnLogout').hidden = !auth.required;
     if (auth.required && !auth.ok) { openLogin(); return; }
-  } catch (e) { /* fall through to normal load, which reports errors */ }
+  } catch (e) { if (e.status === 503) { showSetupProblem(e); return; } /* otherwise fall through to normal load, which reports errors */ }
   for (let attempt = 1; attempt <= 4; attempt++) {
     try { await reload(); return; }
     catch (e) {
       if (e.status === 401) return;               // login dialog already open
+      if (e.status === 503) { showSetupProblem(e); return; }   // server answered: a setup problem, retrying will not help
       if (attempt === 4) { toast('Could not reach server: ' + e.message + ' - reload the page', 10000); return; }
       await new Promise(r => setTimeout(r, 400 * attempt));
     }

@@ -57,3 +57,19 @@
 - **MVP alignment:** MVP.md updated (cloud no longer out of scope; web acceptance criteria; password required on a public URL).
 - **Verified:** webtest 25 checks (3 of 4 runs fully green; 1 run lost a call to the fake DB to a loopback stall); local selftest 19/19 x2.
 - **Not verified:** real Vercel/Neon deployment, live password env var.
+
+## 2026-11-13 - Make deployment setup problems visible
+- **Before:** with no password/database the web app flashed a toast and showed an empty screen; import failed with the raw server error.
+- **Change:** showSetupProblem panel (static/app.js) for 503 responses, from boot and after login.
+- **Why:** user could not see their ideas on the deployed site.
+- **MVP alignment:** no feature change; clearer failure state.
+- **Verified:** browser pane, both cases; local selftest.
+- **Not verified:** the real Vercel deployment (not redeployed).
+
+## 2026-11-15 - Visible delete for ideas, with Undo
+- **Before:** delete existed only in the Edit dialog.
+- **Change:** card x, detail-panel Delete, Select mode + bulk delete, Manage-tab Delete, Undo toast; /api/ideas/delete + /api/ideas/restore.
+- **Why:** user: 'i dont see such a feature' - add delete for ideas or sub-ideas in both apps.
+- **MVP alignment:** idea management (add / edit / delete) requirement; kept calm (muted controls).
+- **Verified:** see HANDOFF (browser pane + API checks).
+- **Not verified:** deployed sites, exe, touch use.
