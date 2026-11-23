@@ -186,7 +186,7 @@ check("vercel.json: static output + /api rewrite + function", vj["outputDirector
       and "api/index.py" in vj["functions"])
 vi = (ROOT / ".vercelignore").read_text(encoding="utf-8")
 check(".vercelignore keeps core.py, seed/, api/, static/ in the deploy", all(x not in vi.splitlines() for x in ("core.py", "seed/", "api/", "static/")))
-check("seed is bundled", (ROOT / "seed" / "seed_data.json").exists())
+check("seed is bundled", (ROOT / "seed" / "seed_ideabank.json").exists() and (ROOT / "seed" / "seed_problembank.json").exists())
 check(".env files are git-ignored", ".env" in (ROOT / ".gitignore").read_text(encoding="utf-8"))
 
 redis.shutdown()

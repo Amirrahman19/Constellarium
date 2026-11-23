@@ -61,10 +61,6 @@
    "description": "Static and event websites."
   },
   {
-   "name": "Web & Sites > Apps",
-   "description": "Hosted or browser-based applications."
-  },
-  {
    "name": "Security & Crypto",
    "description": "Steganography, encryption, private messaging."
   },
@@ -155,10 +151,6 @@
   {
    "name": "Problem Lab & ExCo > Learning & Skills",
    "description": "Training the team asked for or was pointed to."
-  },
-  {
-   "name": "Problem Lab & ExCo > Problem Discovery & Research",
-   "description": "Methodology, problem statements and insights - the core of Problem Lab."
   },
   {
    "name": "Problem Lab & ExCo > External Opportunities",
@@ -3786,127 +3778,6 @@
    "author": "Kai Ming (KM)",
    "related": [],
    "createdAt": "2026-09-29T12:00:00"
-  },
-  {
-   "title": "Problem Lab methodology timeline",
-   "description": "What's the problem? -> how to solve it (we don't cover this) -> does the solution fully cover the problem? -> why isn't it adopted? -> what issues do users face?",
-   "category": "Problem Lab & ExCo > Problem Discovery & Research",
-   "projects": [
-    "Problem Lab (club)"
-   ],
-   "tags": [
-    "methodology",
-    "core",
-    "chat"
-   ],
-   "status": "done",
-   "source": "Problem Lab!! chat, 2026-09-26",
-   "author": "Wei Hao",
-   "related": [],
-   "createdAt": "2026-09-26T12:00:00"
-  },
-  {
-   "title": "Validated Problem Briefs delivered to SUTD makers",
-   "description": "Interviews, field research, observation and expert conversations become evidence-backed briefs; sometimes the answer is 'we don't need to build anything'.",
-   "category": "Problem Lab & ExCo > Problem Discovery & Research",
-   "projects": [
-    "Problem Lab (club)"
-   ],
-   "tags": [
-    "problem-briefs",
-    "core",
-    "chat"
-   ],
-   "status": "in-progress",
-   "source": "Problem Lab!! chat, 2026-09-26",
-   "author": "Josh Chua",
-   "related": [],
-   "createdAt": "2026-09-26T12:00:00"
-  },
-  {
-   "title": "Product-manage the builders",
-   "description": "Problem Lab doesn't build: it gives builders feedback so what's made matches what users want.",
-   "category": "Problem Lab & ExCo > Problem Discovery & Research",
-   "projects": [
-    "Problem Lab (club)"
-   ],
-   "tags": [
-    "product-management",
-    "chat"
-   ],
-   "status": "done",
-   "source": "Problem Lab!! chat, 2026-09-26",
-   "author": "Kai Ming (KM)",
-   "related": [],
-   "createdAt": "2026-09-26T12:00:00"
-  },
-  {
-   "title": "Transcribe SEEPO healthcare problem statements",
-   "description": "Photos from the Singapore Experience Exchange for Patient Organisations (Roche) to be transcribed into problem statements. Owner: Amir.",
-   "category": "Problem Lab & ExCo > Problem Discovery & Research",
-   "projects": [
-    "Healthcare & Eldercare Discovery"
-   ],
-   "tags": [
-    "seepo",
-    "transcription",
-    "chat"
-   ],
-   "status": "in-progress",
-   "source": "Problem Lab!! chat, 2026-09-25",
-   "author": "Amir Rahman",
-   "related": [],
-   "createdAt": "2026-09-25T12:00:00"
-  },
-  {
-   "title": "Satellite-data insights (EASOS, IPP Kenya)",
-   "description": "EASOS: value lies in integrating satellite data with command-and-control structures of Malaysian authorities. IPP Kenya: satellite data gives rural farmers insight and helps banks reduce lending risk.",
-   "category": "Problem Lab & ExCo > Problem Discovery & Research",
-   "projects": [
-    "Healthcare & Eldercare Discovery"
-   ],
-   "tags": [
-    "insights",
-    "satellite",
-    "chat"
-   ],
-   "status": "done",
-   "source": "Problem Lab!! chat, 2026-10-27",
-   "author": "Naimish (N 2)",
-   "related": [],
-   "createdAt": "2026-10-27T12:00:00"
-  },
-  {
-   "title": "User interviews: reducing reading friction for higher-ed students",
-   "description": "KM's MBA project needs 15-minute interviews on lengthy readings such as research papers; offered lunch/dinner as thanks.",
-   "category": "Problem Lab & ExCo > Problem Discovery & Research",
-   "projects": [],
-   "tags": [
-    "interviews",
-    "survey",
-    "chat"
-   ],
-   "status": "new",
-   "source": "Problem Lab!! chat, 2026-10-19",
-   "author": "Kai Ming (KM)",
-   "related": [],
-   "createdAt": "2026-10-19T12:00:00"
-  },
-  {
-   "title": "Help survey on EV / low-emission mobility adoption",
-   "description": "A student asked for survey feedback; may lead to work with cleantech companies.",
-   "category": "Problem Lab & ExCo > Problem Discovery & Research",
-   "projects": [],
-   "tags": [
-    "survey",
-    "mobility",
-    "chat"
-   ],
-   "status": "new",
-   "source": "Problem Lab!! chat, 2026-11-05",
-   "author": "Michael Yiin (external)",
-   "related": [],
-   "createdAt": "2026-11-05T12:00:00"
   },
   {
    "title": "Accenture University Innovation Challenge 2027",

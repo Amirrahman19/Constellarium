@@ -234,3 +234,54 @@ legend { font-size: 12px; color: var(--muted); padding: 0 4px; }
 #selBar { display: inline-flex; align-items: center; gap: 8px; }
 .toast-btn { margin-left: 10px; border: 1px solid currentColor; background: none; color: inherit; border-radius: 6px; padding: 1px 10px; cursor: pointer; font-weight: 600; }
 .row button.danger { margin-left: 4px; }
+
+/* ---------- two banks: IdeaBank (blue) and ProblemBank (orange); same app, separate data ---------- */
+html[data-bank="problembank"] { --accent: #e8743b; --accent-text: #fff; }
+@media (prefers-color-scheme: dark) { html[data-bank="problembank"] { --accent: #f2994a; --accent-text: #1c1206; } }
+.brand { display: flex; align-items: center; gap: 8px; }
+.banks { display: inline-flex; background: var(--panel2); border-radius: 10px; padding: 3px; gap: 2px; }
+.banks button { border: none; background: none; color: var(--muted); font-weight: 600; font-size: 14px; padding: 5px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.banks button:hover { color: var(--text); }
+.banks button.active { background: var(--accent); color: var(--accent-text); }
+.bcount { font-weight: 500; font-size: 11px; opacity: .8; min-width: 1ch; }
+.bcount:empty { display: none; }
+
+/* ---------- move between banks ---------- */
+.cardm { position: absolute; top: 6px; right: 30px; border: none; background: none; color: var(--muted); font-size: 17px; line-height: 1.2; padding: 0 4px; opacity: .45; cursor: pointer; }
+.card:hover .cardm, .cardm:focus-visible { opacity: 1; color: var(--accent); }
+#moveDlg { width: min(460px, 94vw); }
+.mv { align-items: center; text-align: center; gap: 12px; padding: 26px 24px 20px; }
+.mv h3 { font-size: 18px; margin: 0; }
+.mv p { margin: 0; }
+.mv .dlg-actions { margin-top: 6px; justify-content: center; gap: 8px; display: flex; flex-wrap: wrap; }
+.mv-ico { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-size: 26px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
+.mv-ico.to-ideabank { background: color-mix(in srgb, #5b8cff 18%, transparent); color: #5b8cff; }
+.mv-ico.to-problembank { background: color-mix(in srgb, #f2994a 20%, transparent); color: #f2994a; }
+.mv-ico.bad { background: color-mix(in srgb, var(--danger) 16%, transparent); color: var(--danger); font-weight: 700; }
+.mv-list { list-style: none; margin: 0; padding: 8px 12px; width: 100%; text-align: left; border-radius: 10px; background: var(--panel2); font-size: 13px; max-height: 150px; overflow-y: auto; }
+.mv-list li { padding: 2px 0; }
+.mv-err { color: var(--danger); font-size: 13px; overflow-wrap: anywhere; }
+.mv-spin { width: 46px; height: 46px; border-radius: 50%; border: 4px solid var(--panel2); border-top-color: var(--accent); animation: mvspin .8s linear infinite; }
+@keyframes mvspin { to { transform: rotate(360deg); } }
+.mv-check { width: 62px; height: 62px; }
+.mv-check circle { stroke: #27ae60; stroke-width: 3; stroke-dasharray: 151; stroke-dashoffset: 151; animation: mvdraw .5s ease-out forwards; }
+.mv-check path { stroke: #27ae60; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; animation: mvdraw .35s .35s ease-out forwards; }
+@keyframes mvdraw { to { stroke-dashoffset: 0; } }
+.mv-bar { width: 100%; height: 3px; border-radius: 3px; background: var(--panel2); overflow: hidden; }
+.mv-bar i { display: block; height: 100%; background: #27ae60; animation: mvbar 7s linear forwards; }
+@keyframes mvbar { from { width: 100%; } to { width: 0; } }
+@media (prefers-reduced-motion: reduce) { .mv-spin, .mv-check circle, .mv-check path, .mv-bar i { animation-duration: .01s; } }
+
+
+.mv-targets { display: inline-flex; background: var(--panel2); border-radius: 10px; padding: 3px; gap: 2px; }
+.mv-t { border: none; background: none; color: var(--muted); font-weight: 600; font-size: 13px; padding: 5px 14px; border-radius: 8px; cursor: pointer; }
+.mv-t:hover { color: var(--text); }
+.mv-t.on { background: var(--accent); color: var(--accent-text); }
+
+/* link back to the home page + tasks inside the detail panel */
+.homelink { text-decoration: none; color: var(--muted); padding: 5px 10px; border-radius: 8px; border: 1px solid var(--border); font-size: 13px; white-space: nowrap; }
+.homelink:hover { background: var(--panel2); color: var(--text); }
+.tasklist { list-style: none; margin: 0 0 4px; padding: 0; }
+.tasklist li { padding: 2px 0; }
+.tasklist .tdone { text-decoration: line-through; color: var(--muted); }
+.form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }

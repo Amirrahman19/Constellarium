@@ -10,8 +10,8 @@ let view = 'graph';
 let graph = null;
 let editing = null; // idea id being edited
 
-async function api(method, url, body) {
-  const r = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+async function api(method, url, body, bank = BANK) {
+  const r = await fetch(url, { method, headers: { 'Content-Type': 'application/json', 'X-Bank': bank }, body: body ? JSON.stringify(body) : undefined });
   const text = await r.text();
   let j = {};
   try { j = text ? JSON.parse(text) : {}; } catch (e) { throw new Error(`bad response (${r.status}): ${text.slice(0, 120)}`); }
@@ -28,22 +28,157 @@ function toastAction(msg, label, fn, ms = 9000) {      // a toast with one butto
   t.querySelector('button').onclick = async () => { t.hidden = true; await fn(); };
   clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), ms);
 }
-async function reload() { S = await api('GET', '/api/data'); renderAll(); }
+/* ---------- banks: IdeaBank and ProblemBank = same app, same features, separate data ---------- */
+const BANKS = ['ideabank', 'problembank'];
+let BANK = (() => { const q = new URLSearchParams(location.search).get('bank'); if (BANKS.includes(q)) { try { localStorage.setItem('constellariumBank', q); } catch (e) { /* ignore */ } return q; } try { const b = localStorage.getItem('constellariumBank'); return BANKS.includes(b) ? b : 'ideabank'; } catch (e) { return 'ideabank'; } })();
+let bankCounts = {};
+// Each bank shows only the tabs it needs; the first one is its home view.
+const BANK_TABS = { ideabank: ['graph', 'ideas', 'manage'], problembank: ['graph', 'ideas', 'manage'] };
+const homeView = () => BANK_TABS[BANK][0];
+const BANK_LABEL = { ideabank: 'IdeaBank', problembank: 'ProblemBank' };
+const bankName = (b = BANK) => BANK_LABEL[b] || 'IdeaBank';
+const otherBanks = (b = BANK) => BANKS.filter(x => x !== b);
+const defaultTarget = (b = BANK) => otherBanks(b)[0];   // where a Move pre-selects (changeable in the popup)
+// "idea" wording becomes "problem" in ProblemBank. Text between curly quotes (your own titles / names) is left alone.
+const UNIT = { problembank: ['problem', 'problems'] };
+const capFirst = w => w.charAt(0).toUpperCase() + w.slice(1);
+function W(s) {
+  const u = UNIT[BANK];
+  if (!u) return s;
+  const swap = t => t.replace(/\bideas\b/g, u[1]).replace(/\bIdeas\b/g, capFirst(u[1])).replace(/\bidea\b/g, u[0]).replace(/\bIdea\b/g, capFirst(u[0]));
+  return String(s).split(/(“[^”]*”)/).map((p, i) => (i % 2 ? p : swap(p))).join('');
+}
+const _origText = new WeakMap();
+function relabelChrome() {                        // re-word the static interface (not your data) for the current bank
+  const roots = [...$$('.topbar'), ...$$('.graph-toolbar'), ...$$('.list-toolbar'), ...$$('.sidebar h4'), ...$$('#view-manage > p.muted, #view-manage h3'), ...$$('dialog')];
+  const skip = '#moveDlg,#fRelated,#fProjects,#fCategory,#entParent,#expCat,#expTag,#expContact,#authorList,#contactList,#loginDlg';
+  for (const r of roots) {
+    const walker = document.createTreeWalker(r, NodeFilter.SHOW_TEXT);
+    for (let n; (n = walker.nextNode());) {
+      if (n.parentElement && n.parentElement.closest(skip)) continue;
+      if (!_origText.has(n)) _origText.set(n, n.nodeValue);
+      const v = W(_origText.get(n)); if (n.nodeValue !== v) n.nodeValue = v;
+    }
+    for (const el of [r, ...r.querySelectorAll('[placeholder],[title],[aria-label]')]) {
+      for (const a of ['placeholder', 'title', 'aria-label']) {
+        if (!el.hasAttribute || !el.hasAttribute(a) || el.closest(skip)) continue;
+        const k = 'data-orig-' + a; if (!el.hasAttribute(k)) el.setAttribute(k, el.getAttribute(a));
+        el.setAttribute(a, W(el.getAttribute(k)));
+      }
+    }
+  }
+}
+function renderBankBadges() {
+  for (const b of BANKS) {
+    const el = $('#cnt-' + b); if (!el) continue;
+    const n = b === BANK ? S.ideas.length : (bankCounts[b] || {}).ideas;
+    el.textContent = n == null ? '' : n;
+  }
+}
+function applyBank() {
+  document.documentElement.dataset.bank = BANK;
+  document.title = 'Constellarium · ' + bankName();
+  $$('#banks [data-bank]').forEach(b => b.classList.toggle('active', b.dataset.bank === BANK));
+  relabelChrome();
+  $$('#tabs [data-view]').forEach(b => (b.hidden = !BANK_TABS[BANK].includes(b.dataset.view)));
+  $('#clearAll').textContent = `Delete everything in ${bankName()}…`;
+  renderBankBadges();
+}
+async function refreshBankCounts() { try { bankCounts = await api('GET', '/api/banks'); } catch (e) { /* badges just stay empty */ } renderBankBadges(); }
+async function setBank(b) {
+  if (b === BANK || !BANKS.includes(b)) return;
+  const prev = BANK;
+  BANK = b; try { localStorage.setItem('constellariumBank', b); } catch (e) { /* ignore */ }
+  F = { q: '', cat: null, project: null, status: '', tag: '' }; $('#search').value = '';
+  selMode = false; selIds.clear(); $('#detail').hidden = true; if (graph) graph.selected = null; if (typeof tmSel !== 'undefined') tmSel = null;
+  view = BANK_TABS[b].includes(view) ? view : BANK_TABS[b][0];     // keep Contacts / Categories when switching, else land on the bank's home
+  applyBank();
+  try { await reload(); }
+  catch (e) {                                      // never show one bank's data under the other bank's name
+    BANK = prev; try { localStorage.setItem('constellariumBank', prev); } catch (e2) { /* ignore */ }
+    applyBank(); toast(`Could not open ${bankName(b)}: ${e.message}`, 5000); return;
+  }
+  refreshBankCounts();
+}
+
+async function reload() { S = await api('GET', '/api/data'); applyBank(); renderAll(); }
+
+/* ---------- move ideas between banks: confirm -> progress -> success (Undo / Open) or error ---------- */
+let moveTimer = null;
+function moveState(inner, locked = false) {
+  const dlg = $('#moveDlg'); clearTimeout(moveTimer);
+  $('#moveBody').innerHTML = inner; dlg.classList.toggle('nodismiss', locked);
+  if (!dlg.open) dlg.showModal();
+}
+const MV_CHECK = '<svg class="mv-check" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="none"/><path d="M15 27l8 8 15-17" fill="none"/></svg>';
+function moveIdeas(ids, target) {
+  const items = S.ideas.filter(i => ids.includes(i.id));
+  if (!items.length) return;
+  const from = BANK;
+  let to = target && target !== from ? target : defaultTarget(from);
+  const what = items.length === 1 ? `“${items[0].title}”` : W(`${items.length} ideas`);
+  const list = items.slice(0, 5).map(i => `<li>${esc(i.title)}</li>`).join('') + (items.length > 5 ? `<li class="muted">+ ${items.length - 5} more</li>` : '');
+  const draw = () => {
+    moveState(`<div class="mv-ico to-${to}">&#8644;</div>
+      <h3>${esc(W(`Move ${what} to ${bankName(to)}?`))}</h3>
+      ${otherBanks(from).length > 1 ? `<div class="mv-targets" role="radiogroup" aria-label="Move to">${otherBanks(from).map(b => `<button type="button" class="mv-t${b === to ? ' on' : ''}" data-to="${b}" role="radio" aria-checked="${b === to}">${bankName(b)}</button>`).join('')}</div>` : ''}
+      <ul class="mv-list">${list}</ul>
+      <p class="muted small">${esc(W(`Category, projects, tags, status and contacts come along (missing categories and projects are created in ${bankName(to)}). Links to ideas that stay in ${bankName(from)} are removed. You can undo right after.`))}</p>
+      <div class="dlg-actions"><button class="ghost" id="mvCancel">Cancel</button><button class="primary" id="mvGo">Move to ${bankName(to)}</button></div>`);
+    $$('#moveBody .mv-t').forEach(b => (b.onclick = () => { to = b.dataset.to; draw(); }));
+    $('#mvCancel').onclick = () => $('#moveDlg').close();
+    $('#mvGo').onclick = () => doMove(ids, from, to, what, null);
+  };
+  draw();
+}
+async function doMove(ids, from, to, what, undo) {
+  moveState(`<div class="mv-spin" role="status" aria-label="Working"></div><h3>${undo ? 'Undoing…' : 'Moving…'}</h3><p class="muted small">Updating ${bankName(from)} and ${bankName(to)}</p>`, true);
+  const t0 = Date.now();
+  try {
+    const r = await api('POST', '/api/ideas/transfer', undo ? { ids, to, links: undo.links, titles: undo.titles } : { ids, to }, from);
+    const wait = 600 - (Date.now() - t0); if (wait > 0) await new Promise(res => setTimeout(res, wait));   // long enough for the spinner to be seen
+    selIds.clear(); selMode = false; $('#detail').hidden = true; if (graph) graph.selected = null; if (typeof tmSel !== 'undefined') tmSel = null;
+    for (const [b, n] of Object.entries(r.counts)) bankCounts[b] = { ideas: n };      // keep both badges exact, instantly
+    if (BANK === from || BANK === to) await reload(); else renderBankBadges();       // the visible bank updates instantly
+    moveDone(r, from, to, what, !!undo);
+  } catch (e) { moveFailed(e, ids, from, to, what, undo); }
+}
+function moveDone(r, from, to, what, wasUndo) {
+  const notes = [];
+  if (r.renamed) notes.push(`${r.renamed} renamed (${bankName(to)} already had the same title)`);
+  if (!wasUndo && r.dropped.length) notes.push(`${r.dropped.length} link${r.dropped.length === 1 ? '' : 's'} to items left behind removed`);
+  moveState(`${MV_CHECK}<h3>${esc(wasUndo ? `Moved back to ${bankName(to)}` : W(`Moved ${what} to ${bankName(to)}`))}</h3>
+    ${notes.length ? `<p class="muted small">${esc(notes.join(' · '))}</p>` : ''}
+    <div class="mv-bar"><i></i></div>
+    <div class="dlg-actions">${wasUndo ? '' : '<button class="ghost" id="mvUndo">Undo</button>'}<button class="ghost" id="mvOk">OK</button>${wasUndo ? '' : `<button class="primary" id="mvOpen">Open ${bankName(to)}</button>`}</div>`);
+  $('#mvOk').onclick = () => $('#moveDlg').close();
+  if (!wasUndo) {
+    $('#mvUndo').onclick = () => doMove(r.ids, to, from, what, { links: r.dropped, titles: r.originalTitles });
+    $('#mvOpen').onclick = () => { $('#moveDlg').close(); setBank(to); };
+  }
+  moveTimer = setTimeout(() => $('#moveDlg').close(), 7000);       // the bar above shrinks over these 7 seconds
+}
+function moveFailed(e, ids, from, to, what, undo) {
+  moveState(`<div class="mv-ico bad">!</div><h3>Could not move</h3><p class="mv-err">${esc(e.message)}</p><p class="muted small">Nothing was lost.</p>
+    <div class="dlg-actions"><button class="ghost" id="mvClose">Close</button><button class="primary" id="mvRetry">Try again</button></div>`);
+  $('#mvClose').onclick = () => $('#moveDlg').close();
+  $('#mvRetry').onclick = () => doMove(ids, from, to, what, undo);
+}
 
 /* ---------- delete ideas (one or many) with Undo ---------- */
 let selMode = false; const selIds = new Set();
 async function deleteIdeas(ids) {
   const items = S.ideas.filter(i => ids.includes(i.id));
   if (!items.length) return;
-  const name = items.length === 1 ? `“${items[0].title}”` : `${items.length} ideas`;
-  if (!confirm(`Delete ${name}?\n\nYou can undo right after.`)) return;
+  const name = items.length === 1 ? `“${items[0].title}”` : W(`${items.length} ideas`);
+  if (!confirm(W(`Delete ${name}?\n\nYou can undo right after.`))) return;
   try {
     const r = await api('POST', '/api/ideas/delete', { ids: items.map(i => i.id) });
     $('#detail').hidden = true; if (graph) graph.selected = null; selIds.clear();
     if (typeof tmSel !== 'undefined' && ids.includes(tmSel)) tmSel = null;       // treemap selection
     if ($('#ideaDlg').open) $('#ideaDlg').close();
     await reload();
-    toastAction(`Deleted ${name}`, 'Undo', async () => {
+    toastAction(W(`Deleted ${name}`), 'Undo', async () => {
       try { await api('POST', '/api/ideas/restore', { ideas: r.deleted, links: r.links }); await reload(); toast('Restored'); }
       catch (err) { toast('Could not undo: ' + err.message, 4000); }
     });
@@ -52,6 +187,7 @@ async function deleteIdeas(ids) {
 function updateSelBar() {
   $('#selBar').hidden = !selMode; $('#selToggle').textContent = selMode ? 'Done' : 'Select';
   $('#selCount').textContent = selIds.size + ' selected'; $('#selDel').disabled = !selIds.size;
+  $('#selMove').disabled = !selIds.size;
 }
 async function deleteEntity(kind, id) {
   const e = (kind === 'cat' ? S.categories : S.projects).find(x => x.id === id);
@@ -64,7 +200,7 @@ async function deleteEntity(kind, id) {
     const n = S.ideas.filter(i => (i.projects || []).includes(id)).length;
     msg = `Delete the project “${e.name}”?\n\n${n} idea${n === 1 ? '' : 's'} ${n === 1 ? 'stays' : 'stay'}, but ${n === 1 ? 'loses' : 'lose'} this project link.`;
   }
-  if (!confirm(msg)) return;
+  if (!confirm(W(msg))) return;
   try { await api('DELETE', (kind === 'cat' ? '/api/categories/' : '/api/projects/') + id); if (F.cat === id) F.cat = null; if (F.project === id) F.project = null; await reload(); toast('Deleted'); }
   catch (err) { toast('Could not delete: ' + err.message, 4000); }
 }
@@ -107,7 +243,7 @@ const anyFilter = () => F.q || F.cat || F.project || F.status || F.tag;
 function renderSidebar() {
   const ideas = S.ideas;
   const orphans = ideas.filter(i => !(i.projects || []).length).length;
-  $('#stats').innerHTML = [[ideas.length, 'ideas'], [S.categories.length, 'categories'], [S.projects.length, 'projects'], [orphans, 'not linked to a project']]
+  $('#stats').innerHTML = [[ideas.length, W('ideas')], [S.categories.length, 'categories'], [S.projects.length, 'projects'], [orphans, 'not linked to a project']]
     .map(([n, l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join('');
 
   const counts = new Map();
@@ -199,11 +335,11 @@ function renderGraph() {
   const empty = $('#graphEmpty');
   if (!S.ideas.length) {
     empty.hidden = false;
-    empty.innerHTML = `<h3 style="margin:0;color:var(--text)">Your Constellarium is empty</h3><div>Import your team's ideas (CSV / JSON) or add the first one.</div>
-      <div class="row-btns"><button class="primary" id="emptyImport">Import ideas</button><button class="ghost" id="emptyNew">+ New idea</button><button class="ghost" id="emptySample">Load sample data</button></div>`;
+    empty.innerHTML = W(`<h3 style="margin:0;color:var(--text)">Your ${bankName()} is empty</h3><div>Import your team's ideas (CSV / JSON) or add the first one.</div>
+      <div class="row-btns"><button class="primary" id="emptyImport">Import ideas</button><button class="ghost" id="emptyNew">+ New idea</button><button class="ghost" id="emptySample">Load sample data</button></div>`);
     $('#emptyImport').onclick = openImport; $('#emptyNew').onclick = () => openIdea(); $('#emptySample').onclick = loadSample;
   } else if (isBoard) empty.hidden = true;
-  else if (!nodes.length) { empty.hidden = false; empty.innerHTML = '<div>No ideas match the current filters.</div>'; }
+  else if (!nodes.length) { empty.hidden = false; empty.innerHTML = W('<div>No ideas match the current filters.</div>'); }
   else empty.hidden = true;
   if (isBoard) {
     if (S.ideas.length) { if (mode === 'treemap') renderTreemap(); else renderBoard(); }
@@ -246,7 +382,7 @@ function showDetail(n) {
       ${(i.related || []).length ? `<div class="sec"><b>Related ideas</b><ul>${i.related.map(r => S.ideas.find(x => x.id === r)).filter(Boolean).map(ideaLi).join('')}</ul></div>` : ''}
       ${(i.primaryContact || i.secondaryContact) ? `<div class="sec"><b>Contacts</b>${i.primaryContact ? `<div><span class="muted small">Primary</span> ${esc(i.primaryContact)}</div>` : ''}${i.secondaryContact ? `<div><span class="muted small">Secondary</span> ${esc(i.secondaryContact)}</div>` : ''}</div>` : ''}
       <div class="sec muted small">${i.author ? 'By ' + esc(i.author) + ' · ' : ''}${esc((i.createdAt || '').slice(0, 10))}${i.source ? '<br>Source: ' + esc(i.source) : ''}</div>
-      <div class="actions"><button class="primary small" data-edit="${i.id}">Edit</button><button class="small danger" data-del="${i.id}">Delete</button></div>`;
+      <div class="actions"><button class="primary small" data-edit="${i.id}">Edit</button><button class="small" data-move="${i.id}">Move…</button><button class="small danger" data-del="${i.id}">Delete</button></div>`;
   } else if (n.type === 'category') {
     const c = n.data, ids = subtreeIds(c.id), list = S.ideas.filter(i => ids.has(i.category));
     const pc = new Map(); for (const i of list) for (const p of i.projects || []) pc.set(p, (pc.get(p) || 0) + 1);
@@ -266,7 +402,48 @@ function showDetail(n) {
     h += `<div class="kind">Tag</div><h3>#${esc(t)}</h3><div class="sec"><ul>${list.map(ideaLi).join('')}</ul></div><div class="actions"><button class="small" data-gotag="${esc(t)}">Filter to this</button></div>`;
   }
   d.innerHTML = h; d.hidden = false;
+  if (n.type === 'idea') loadIdeaTasks(n.data);
 }
+
+/* ---------- tasks linked to an idea / problem (the to-do list is synced in the backend: renames, moves and deletes follow) ---------- */
+async function loadIdeaTasks(idea) {
+  const d = $('#detail');
+  const box = document.createElement('div');
+  box.className = 'sec'; box.id = 'dTasks';
+  box.innerHTML = '<b>Tasks</b><span class="muted small">loading…</span>';
+  const actions = d.querySelector('.actions');
+  d.insertBefore(box, actions);
+  try {
+    const r = await api('GET', `/api/todos/for/${BANK}/${idea.id}`);
+    if (!$('#dTasks') || !d.contains(box)) return;
+    const open = r.tasks.filter(t => !t.done), done = r.tasks.filter(t => t.done);
+    box.innerHTML = `<b>Tasks</b>` + (r.tasks.length
+      ? `<ul class="tasklist">${r.tasks.map(t => `<li><label><input type="checkbox" data-taskdone="${t.id}" ${t.done ? 'checked' : ''}> <span class="${t.done ? 'tdone' : ''}">${esc(t.title)}</span></label>${t.due ? ` <span class="muted small">· ${esc(t.due)}</span>` : ''}${t.priority === 'high' ? ' <span class="badge" style="background:var(--danger);color:#fff">high</span>' : ''}</li>`).join('')}</ul><div class="muted small">${open.length} open · ${done.length} done · <a href="index.html#todo">open to-do list</a></div>`
+      : '<span class="muted small">No tasks yet.</span>') + `<div style="margin-top:6px"><button class="small" data-addtask="${idea.id}">+ Add task</button></div>`;
+  } catch (e) { box.innerHTML = `<b>Tasks</b><span class="muted small">${esc(e.message)}</span>`; }
+}
+let taskIdea = null;
+function addTaskFor(id) {
+  const idea = S.ideas.find(x => x.id === id); if (!idea) return;
+  taskIdea = idea;
+  $('#taskFor').textContent = `Linked to: ${idea.title}`;
+  $('#taskForm').reset(); $('#taskDlg').showModal(); $('#taskForm').title.focus();
+}
+$('#taskCancel').onclick = () => $('#taskDlg').close();
+$('#taskForm').onsubmit = async e => {
+  e.preventDefault();
+  const f = e.target;
+  try {
+    await api('POST', '/api/todos', { title: f.title.value, due: f.due.value, priority: f.priority.value, link: { bank: BANK, id: taskIdea.id } });
+    $('#taskDlg').close(); toast('Task added to your to-do list');
+    if ($('#dTasks')) { $('#dTasks').remove(); loadIdeaTasks(taskIdea); }
+  } catch (err) { toast(err.message, 5000); }
+};
+document.addEventListener('change', async e => {
+  const c = e.target.closest('[data-taskdone]'); if (!c) return;
+  try { await api('PUT', '/api/todos/' + c.dataset.taskdone, { done: c.checked }); const s = c.parentElement.querySelector('span'); if (s) s.classList.toggle('tdone', c.checked); }
+  catch (err) { c.checked = !c.checked; toast(err.message, 5000); }
+});
 
 /* ---------- ideas list ---------- */
 function renderList() {
@@ -276,11 +453,11 @@ function renderList() {
   ideas.sort((a, b) => sort === 'title' ? a.title.localeCompare(b.title)
     : sort === 'category' ? catPath(a.category).localeCompare(catPath(b.category)) || a.title.localeCompare(b.title)
       : sort === 'created' ? (b.createdAt || '').localeCompare(a.createdAt || '') : (b.updatedAt || '').localeCompare(a.updatedAt || ''));
-  $('#listCount').textContent = `${ideas.length} of ${S.ideas.length} ideas`;
+  $('#listCount').textContent = W(`${ideas.length} of ${S.ideas.length} ideas`);
   const card = i => {
     const c = cats.get(i.category);
     return `<div class="card${selMode && selIds.has(i.id) ? ' picked' : ''}" data-idea="${i.id}" style="--c:${esc(c ? c.color : 'var(--border)')}">
-      ${selMode ? `<input type="checkbox" class="selbox" ${selIds.has(i.id) ? 'checked' : ''} tabindex="-1" aria-label="Select">` : `<button class="cardx" data-del="${i.id}" title="Delete this idea" aria-label="Delete idea">&times;</button>`}
+      ${selMode ? `<input type="checkbox" class="selbox" ${selIds.has(i.id) ? 'checked' : ''} tabindex="-1" aria-label="Select">` : `<button class="cardm" data-move="${i.id}" title="Move to the other bank" aria-label="Move to the other bank">&#8644;</button><button class="cardx" data-del="${i.id}" title="Delete this idea" aria-label="Delete idea">&times;</button>`}
       <h5>${esc(i.title)}</h5>${i.description ? `<p>${esc(i.description)}</p>` : ''}
       <div class="meta">${c ? `<span class="badge">${esc(catPath(c.id))}</span>` : '<span class="badge">uncategorised</span>'}
       <span class="badge status-${esc(i.status)}">${esc(i.status)}</span>
@@ -302,7 +479,7 @@ function renderList() {
     }
     html = [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([k, arr]) => `<h4 class="group-h">${esc(k)} <span class="badge">${arr.length}</span></h4>` + arr.map(card).join('')).join('');
   }
-  $('#ideaList').innerHTML = html || `<div class="list-empty">${S.ideas.length ? 'No ideas match the current filters.' : 'No ideas yet — use “Import” or “+ New idea”.'}</div>`;
+  $('#ideaList').innerHTML = html || `<div class="list-empty">${S.ideas.length ? W('No ideas match the current filters.') : W('No ideas yet — use “Import” or “+ New idea”.')}</div>`;
   updateSelBar();
 }
 
@@ -336,21 +513,21 @@ function openIdea(id) {
   editing = id || null;
   const i = id ? S.ideas.find(x => x.id === id) : { title: '', description: '', category: F.cat && F.cat !== '__none' ? F.cat : null, projects: F.project ? [F.project] : [], tags: F.tag ? [F.tag] : [], related: [], author: '', status: 'new', source: '', primaryContact: '', secondaryContact: '' };
   const f = $('#ideaForm');
-  $('#ideaDlgTitle').textContent = id ? 'Edit idea' : 'New idea';
+  $('#ideaDlgTitle').textContent = W(id ? 'Edit idea' : 'New idea');
   f.primaryContact.value = i.primaryContact || ''; f.secondaryContact.value = i.secondaryContact || '';
   f.title.value = i.title; f.description.value = i.description || ''; f.author.value = i.author || ''; f.status.value = i.status; f.tags.value = (i.tags || []).join(', ');
   f.source.value = i.source || ''; f.newCategory.value = ''; f.newProject.value = ''; $('#fRelatedSearch').value = '';
   $('#fCategory').innerHTML = '<option value="">— none —</option>' + catOptions(i.category);
   $('#fProjects').innerHTML = S.projects.map(p => `<label><input type="checkbox" value="${p.id}" ${(i.projects || []).includes(p.id) ? 'checked' : ''}> <span class="dot" style="background:${esc(p.color)}"></span>${esc(p.name)}</label>`).join('') || '<span class="muted small">No projects yet — add one below.</span>';
   renderRelated(i.related || []);
-  $('#ideaDelete').hidden = !id;
+  $('#ideaDelete').hidden = !id; $('#ideaMove').hidden = !id;
   $('#ideaDlg').showModal(); f.title.focus();
 }
 function renderRelated(checked) {
   const q = $('#fRelatedSearch').value.toLowerCase();
   const keep = new Set(checked);
   $('#fRelated').innerHTML = S.ideas.filter(x => x.id !== editing && (keep.has(x.id) || !q || x.title.toLowerCase().includes(q))).slice(0, 200)
-    .map(x => `<label><input type="checkbox" value="${x.id}" ${keep.has(x.id) ? 'checked' : ''}> ${esc(x.title)}</label>`).join('') || '<span class="muted small">No other ideas yet.</span>';
+    .map(x => `<label><input type="checkbox" value="${x.id}" ${keep.has(x.id) ? 'checked' : ''}> ${esc(x.title)}</label>`).join('') || W('<span class="muted small">No other ideas yet.</span>');
 }
 async function saveIdea(e) {
   e.preventDefault();
@@ -424,12 +601,12 @@ function previewImport() {
     const p = parseImport($('#impText').value);
     if (!p) { el.textContent = ''; return; }
     if (isBackup(p)) {
-      el.innerHTML = `<b>Full Constellarium backup detected</b>: ${p.ideas.length} ideas, ${p.categories.length} categories, ${(p.projects || []).length} projects. Importing will <b>replace all current data</b> (the previous version is kept as a backup).`;
+      el.innerHTML = W(`<b>Full ${bankName()} backup detected</b>: ${p.ideas.length} ideas, ${p.categories.length} categories, ${(p.projects || []).length} projects. Importing will <b>replace all current data</b> (the previous version is kept as a backup).`);
       impPayload = p; $('#impGo').disabled = false; return;
     }
     const n = (p.ideas || []).filter(i => i && String(i.title || '').trim()).length;
     const cats = new Set((p.ideas || []).map(i => (i.category || '').trim()).filter(Boolean));
-    el.innerHTML = n ? `Ready: <b>${n}</b> ideas, <b>${cats.size}</b> distinct categories detected.` : '<span style="color:var(--danger)">No ideas found — check the “title” column/key.</span>';
+    el.innerHTML = W(n ? `Ready: <b>${n}</b> ideas, <b>${cats.size}</b> distinct categories detected.` : '<span style="color:var(--danger)">No ideas found — check the “title” column/key.</span>');
     if (n) { impPayload = p; $('#impGo').disabled = false; }
   } catch (err) { el.innerHTML = `<span style="color:var(--danger)">Could not parse: ${esc(err.message)}</span>`; }
 }
@@ -440,7 +617,7 @@ async function doImport(e) {
     if (isBackup(impPayload)) {
       if (!confirm('Replace ALL current data with this backup?')) return;
       await api('POST', '/api/replace', { categories: impPayload.categories, projects: impPayload.projects || [], ideas: impPayload.ideas });
-      $('#impDlg').close(); toast(`Restored backup: ${impPayload.ideas.length} ideas`, 5000); await reload(); return;
+      $('#impDlg').close(); toast(W(`Restored backup: ${impPayload.ideas.length} ideas`), 5000); await reload(); return;
     }
     const r = await api('POST', '/api/import', impPayload);
     $('#impDlg').close(); toast(`Imported: ${r.ideasAdded} new, ${r.ideasUpdated} updated · +${r.categoriesAdded} categories, +${r.projectsAdded} projects`, 5000); await reload();
@@ -487,7 +664,7 @@ function exportCsv(ideas) {
 function exportMarkdown(ideas, label) {
   const projs = projById(), groups = new Map();
   for (const i of ideas) { const k = i.category ? catPath(i.category) : 'Uncategorised'; (groups.get(k) || groups.set(k, []).get(k)).push(i); }
-  let md = `# Constellarium export\n\n_${new Date().toISOString().slice(0, 10)} · ${ideas.length} ideas · ${label}_\n`;
+  let md = `# ${bankName()} export\n\n_${new Date().toISOString().slice(0, 10)} · ${ideas.length} ${W('ideas')} · ${label}_\n`;
   for (const k of [...groups.keys()].sort()) {
     md += `\n## ${k}\n`;
     for (const i of groups.get(k).sort((a, b) => a.title.localeCompare(b.title))) {
@@ -514,14 +691,18 @@ function doExport(e) {
     const out = r.ideas.map(i => ({ title: i.title, description: i.description, category: catPath(i.category).replace(/ › /g, ' > '), projects: (i.projects || []).map(p => (projs.get(p) || {}).name).filter(Boolean), tags: i.tags || [], author: i.author, primaryContact: i.primaryContact || '', secondaryContact: i.secondaryContact || '', status: i.status, source: i.source, related: (i.related || []).map(x => (byId.get(x) || {}).title).filter(Boolean), createdAt: i.createdAt }));
     download(`constellarium-filtered-${stamp}.json`, JSON.stringify({ ideas: out }, null, 2), 'application/json');
   }
-  $('#exportDlg').close(); toast(`Exported ${r.ideas.length} ideas`);
+  $('#exportDlg').close(); toast(W(`Exported ${r.ideas.length} ideas`));
 }
 async function loadSample() {
-  try { const p = await (await fetch('/sample.json')).json(); const r = await api('POST', '/api/import', p); toast(`Loaded sample: ${r.ideasAdded} ideas`); await reload(); } catch (e) { toast('Could not load sample: ' + e.message); }
+  try { const p = await (await fetch('/sample.json')).json(); const r = await api('POST', '/api/import', p); toast(W(`Loaded sample: ${r.ideasAdded} ideas`)); await reload(); } catch (e) { toast('Could not load sample: ' + e.message); }
 }
 
 /* ---------- wiring ---------- */
 document.addEventListener('click', e => {
+  const at = e.target.closest('[data-addtask]');
+  if (at) { addTaskFor(at.dataset.addtask); return; }
+  const mv = e.target.closest('[data-move]');
+  if (mv) { e.stopPropagation(); moveIdeas([mv.dataset.move]); return; }
   const del = e.target.closest('[data-del],[data-delcat],[data-delproj]');
   if (del) { e.stopPropagation(); if (del.dataset.del) deleteIdeas([del.dataset.del]); else if (del.dataset.delcat) deleteEntity('cat', del.dataset.delcat); else deleteEntity('proj', del.dataset.delproj); return; }
   const pick = selMode && e.target.closest('#ideaList .card');       // in Select mode a click on a card ticks it instead of opening it
@@ -571,6 +752,8 @@ $('#expCancel').onclick = () => $('#exportDlg').close();
 $('#ideaForm').onsubmit = saveIdea;
 $('#ideaCancel').onclick = () => $('#ideaDlg').close();
 $('#ideaDelete').onclick = () => deleteIdeas([editing]);
+$('#ideaMove').onclick = () => { const id = editing; $('#ideaDlg').close(); moveIdeas([id]); };
+$('#selMove').onclick = () => moveIdeas([...selIds]);
 $('#selToggle').onclick = () => { selMode = !selMode; selIds.clear(); renderList(); };
 $('#selAll').onclick = () => { for (const i of filteredIdeas()) selIds.add(i.id); renderList(); };
 $('#selDel').onclick = () => deleteIdeas([...selIds]);
@@ -589,14 +772,10 @@ $('#impCancel').onclick = () => $('#impDlg').close();
 $('#impForm').onsubmit = doImport;
 $('#impTemplate').onclick = e => { e.preventDefault(); download('constellarium-template.csv', 'title,description,category,projects,tags,author,status,source,related\n"Solar bus stops","Roof panels power the displays","Sustainability > Energy","Smart City;Campus Pilot","solar;iot","Aisha","exploring","Team brainstorm 2026-11-01",""\n', 'text/csv'); };
 $('#loadSample').onclick = loadSample;
-$('#clearAll').onclick = async () => { if (prompt('This deletes ALL ideas, categories and projects (a backup is kept in data/backups). Type DELETE to confirm.') === 'DELETE') { await api('POST', '/api/clear'); F = { q: '', cat: null, project: null, status: '', tag: '' }; toast('Cleared'); reload(); } };
+$('#clearAll').onclick = async () => { if (prompt(W(`This deletes ALL ideas, categories and projects in ${bankName()} only (the other bank is not touched; a backup is kept). Type DELETE to confirm.`)) === 'DELETE') { await api('POST', '/api/clear'); F = { q: '', cat: null, project: null, status: '', tag: '' }; toast('Cleared'); reload(); } };
 $$('dialog').forEach(d => d.addEventListener('click', e => { if (e.target === d && !d.classList.contains('nodismiss')) d.close(); }));
 
-function openLogin() {
-  const dlg = $('#loginDlg');
-  if (!dlg.open) dlg.showModal();
-  $('#loginForm').password.focus();
-}
+function openLogin() { location.href = './'; }      // the home page owns the login: one sign-in for Banks, To-do and Passwords
 $('#loginDlg').addEventListener('cancel', e => e.preventDefault());   // can't Esc past the login
 // A deployment problem (no database / no password configured / database unreachable) must be obvious, not a silently empty app.
 function showSetupProblem(e) {
@@ -616,9 +795,10 @@ $('#loginForm').onsubmit = async e => {
     await api('POST', '/api/login', { password: $('#loginForm').password.value });
   } catch (err) { $('#loginErr').textContent = err.message; return; }
   $('#loginDlg').close(); $('#loginForm').reset(); $('#loginErr').textContent = ''; $('#btnLogout').hidden = false;
-  try { await reload(); } catch (err) { showSetupProblem(err); }
+  try { await reload(); refreshBankCounts(); } catch (err) { showSetupProblem(err); }
 };
-$('#btnLogout').onclick = async () => { await api('POST', '/api/logout', {}); location.reload(); };
+$('#banks').addEventListener('click', e => { const b = e.target.closest('[data-bank]'); if (b) setBank(b.dataset.bank); });
+$('#btnLogout').onclick = async () => { await api('POST', '/api/logout', {}); location.href = './'; };
 
 (async function boot() {
   try {
@@ -627,7 +807,7 @@ $('#btnLogout').onclick = async () => { await api('POST', '/api/logout', {}); lo
     if (auth.required && !auth.ok) { openLogin(); return; }
   } catch (e) { if (e.status === 503) { showSetupProblem(e); return; } /* otherwise fall through to normal load, which reports errors */ }
   for (let attempt = 1; attempt <= 4; attempt++) {
-    try { await reload(); return; }
+    try { await reload(); refreshBankCounts(); applyDeepLink(); return; }
     catch (e) {
       if (e.status === 401) return;               // login dialog already open
       if (e.status === 503) { showSetupProblem(e); return; }   // server answered: a setup problem, retrying will not help
@@ -636,3 +816,11 @@ $('#btnLogout').onclick = async () => { await api('POST', '/api/logout', {}); lo
     }
   }
 })();
+
+/* Opened from the to-do list: banks.html?bank=ideabank&q=<title> shows that item straight away. */
+function applyDeepLink() {
+  const q = new URLSearchParams(location.search).get('q');
+  if (!q) return;
+  F.q = q; $('#search').value = q; view = 'ideas'; renderAll();
+  history.replaceState(null, '', location.pathname + '?bank=' + BANK);
+}

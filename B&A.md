@@ -73,3 +73,27 @@
 - **MVP alignment:** idea management (add / edit / delete) requirement; kept calm (muted controls).
 - **Verified:** see HANDOFF (browser pane + API checks).
 - **Not verified:** deployed sites, exe, touch use.
+
+## 2026-11-16 - Fix log-out 501 (unread request body under keep-alive)
+- **Before:** Log out showed 'Error 501 Unsupported method ({}GET)'.
+- **Change:** always read the request body up front in _mutate (IdeaBank + Constellarium); 413 for oversize.
+- **Why:** user screenshot after clicking Log out.
+- **MVP alignment:** bug fix, no feature change.
+- **Verified/Not verified:** see HANDOFF.
+
+## 2026-11-16 - Split into IdeaBank and ProblemBank
+- **Before:** one store of 214 ideas (7 of them problems rather than ideas).
+- **Change:** two banks with the same features and separate data (core.py per-bank storage, seeds, automatic migration, X-Bank, /api/banks, transfer_ideas), switcher + problem wording + accent + move popup with progress/success/Undo (static/app.js, index.html, style.css); seed split into seed_ideabank.json / seed_problembank.json.
+- **Why:** user asked for the IdeaBank/ProblemBank split in Constellarium (no To-Do bank), intuitively separated, with transfer between them.
+- **MVP alignment:** change request logged and marked done in MVP.md; other tabs/features untouched.
+- **Verified:** 23-check bank test, selftest, webtest, keep-alive, browser-pane UI run (see HANDOFF).
+- **Not verified:** exe window, real Vercel/Neon; not committed/pushed.
+
+
+## 2026-11-23 - Hub redesign: Banks / To-do list / Passwords with two passwords
+- **Before:** one app (IdeaBank + ProblemBank) behind one password; no to-do list, no password manager.
+- **Change:** new home (static/index.html, hub.js, shell.*) with three cards; to-do list (todo.js, core.py todo_*) linked to ideas/problems and synced (resolve on read, relink on transfer, Tasks panel in banks.html); password manager (vault.js, core.py vault_*) with a second server-side password plus browser-side AES-GCM encryption and per-item reveal; signed expiring sessions; CSP/HSTS in vercel.json; tools/hubtest.py and tools/devserver.py; README deploy section.
+- **Why:** user request 2026-11-23 (see MVP change log): redeploy with password lock, Neon, three cards, second password for the password list, reveal icon per item, banks and to-do synced, seamless use.
+- **MVP alignment:** adds the requested features; bank features untouched; no commit/push/deploy done.
+- **Verified:** hubtest 40/40, webtest and selftest pass, browser-pane run of the main flows incl. mobile width (details in HANDOFF).
+- **Not verified:** real Vercel/Neon deployment, phone, other browsers.
