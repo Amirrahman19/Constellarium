@@ -78,7 +78,15 @@ def _find_pg_url():
     for name, val in os.environ.items():
         if val and (name.endswith("_POSTGRES_URL") or name.endswith("_DATABASE_URL")):
             return val
+    for name, val in sorted(os.environ.items()):          # any other name (custom prefix): a postgres:// value that is not the unpooled twin
+        if val.startswith(("postgres://", "postgresql://")) and not any(x in name for x in ("UNPOOLED", "NON_POOLING", "NO_SSL")):
+            return val
     return ""
+
+
+def _db_var_names():
+    """Names (never values) of environment variables that look database-related, to make 'No database' errors diagnosable."""
+    return sorted(n for n, v in os.environ.items() if v.startswith(("postgres", "redis", "https://")) and any(k in n.upper() for k in ("POSTGRES", "DATABASE", "NEON", "REDIS", "KV_", "STORAGE", "DB_")))
 
 
 PG_URL = _find_pg_url()
@@ -177,7 +185,8 @@ def _pg_set(key, value, backup_key=None):
 def _check_storage():
     if ON_WEB and not REMOTE:
         raise StorageError("No database connected. In Vercel: Storage -> connect a Neon Postgres (or Upstash Redis) "
-                           "database to this project, then redeploy.")
+                           "database to this project, then redeploy (a new deployment is needed after connecting). "
+                           "Variables seen: " + (", ".join(_db_var_names()) or "none") + ".")
 
 
 def _normalise(s):
